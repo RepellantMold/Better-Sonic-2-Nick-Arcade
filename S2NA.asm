@@ -11,8 +11,12 @@
   include "S2NA.constants.asm"
 ; ---------------------------------------------------------------------------
 ; Macros
-align macro
-     cnop 0,\1
+align macro pos,num
+	if narg=1
+		dcb.b ((\pos)-(*%(\pos)))%(\pos),$FF
+	else
+		dcb.b ((\pos)-(*%(\pos)))%(\pos),num
+	endif
      endm
 
 ; Macro to align a bank to prevent it crossing a $8000 byte boundary.
