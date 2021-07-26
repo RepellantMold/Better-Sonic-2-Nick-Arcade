@@ -79,7 +79,7 @@ ErrorTrap:
 		bra.s	ErrorTrap
 ; ===========================================================================
 
-EntryPoint:				; DATA XREF: ROM:00000000o
+EntryPoint:
 		tst.l	(Z80_Port_1_Control).l	; test Port A Ctrl
 		bne.s	PortA_OK
 
@@ -113,49 +113,47 @@ VDPInitLoop:				; CODE XREF: ROM:00000244j
 		move.w	d7,(a1)
 		move.w	d7,(a2)
 
-WaitForZ80:				; CODE XREF: ROM:00000252j
+WaitForZ80:
 		btst	d0,(a1)
 		bne.s	WaitForZ80
 		moveq	#$25,d2	; '%'
 
-Z80InitLoop:				; CODE XREF: ROM:00000258j
+Z80InitLoop:
 		move.b	(a5)+,(a0)+
 		dbf	d2,Z80InitLoop
 		move.w	d0,(a2)
 		move.w	d0,(a1)
 		move.w	d7,(a2)
 
-ClearRAMLoop:				; CODE XREF: ROM:loc_264j
+ClearRAMLoop:
 		move.l	d0,-(a6)
-
-loc_264:
 		dbf	d6,ClearRAMLoop
 		move.l	(a5)+,(a4)
 		move.l	(a5)+,(a4)
 		moveq	#$1F,d3
 
-ClearCRAMLoop:				; CODE XREF: ROM:00000270j
+ClearCRAMLoop:
 		move.l	d0,(a3)
 		dbf	d3,ClearCRAMLoop
 		move.l	(a5)+,(a4)
 		moveq	#$13,d4
 
-ClearVSRAMLoop:				; CODE XREF: ROM:0000027Aj
+ClearVSRAMLoop:
 		move.l	d0,(a3)
 		dbf	d4,ClearVSRAMLoop
 		moveq	#3,d5
 
-PSGInitLoop:				; CODE XREF: ROM:00000284j
+PSGInitLoop:
 		move.b	(a5)+,$11(a3)
 		dbf	d5,PSGInitLoop
 		move.w	d0,(a2)
 		movem.l	(a6),d0-a6
 		move	#$2700,sr
 
-PortC_OK:				; DATA XREF: ROM:PortA_OKt
+PortC_OK:
 		bra.s	GameProgram
 ; ===========================================================================
-InitValues:	dc.w $8000		; DATA XREF: ROM:00000216t
+InitValues:	dc.w $8000
 		dc.w $3FFF
 		dc.w $100
 
@@ -165,7 +163,8 @@ InitValues:	dc.w $8000		; DATA XREF: ROM:00000216t
 		dc.l VDP_data_port	; VDP data port
 		dc.l VDP_control_port	; VDP control port
 
-		dc.b   4,$14,$30,$3C	; 0 ; values for VDP registers
+					; values for VDP registers
+		dc.b   4,$14,$30,$3C	; 0
 		dc.b   7,$6C,  0,  0	; 4
 		dc.b   0,  0,$FF,  0	; 8
 		dc.b $81,$37,  0,  1	; 12
@@ -173,9 +172,10 @@ InitValues:	dc.w $8000		; DATA XREF: ROM:00000216t
 		dc.b $FF,  0,  0,$80	; 20
 
 		dc.l $40000080		; value	for VRAM fill
-		; Z80 instructions
+
+					; Z80 instructions
 		dc.b $AF		; xor	a
-		dc.b $01, $D9, $1F	; ld	bc,1fd9h
+		dc.b $01, $D9, $1F	; ld	bc,1FD9h
 		dc.b $11, $27, $00	; ld	de,0027h
 		dc.b $21, $26, $00	; ld	hl,0026h
 		dc.b $F9		; ld	sp,hl
@@ -197,7 +197,7 @@ InitValues:	dc.w $8000		; DATA XREF: ROM:00000216t
 		dc.b $F9		; ld	sp,hl
 		dc.b $F3		; di
 		dc.b $ED, $56		; im1
-		dc.b $36, $E9		; ld	(hl),e9h
+		dc.b $36, $E9		; ld	(hl),E9h
 		dc.b $E9		; jp	(hl)
 
 		dc.w $8104		; VDP display mode
@@ -205,7 +205,7 @@ InitValues:	dc.w $8000		; DATA XREF: ROM:00000216t
 		dc.l $C0000000		; value	for CRAM Write mode
 		dc.l $40000010		; value	for VSRAM write	mode
 
-		dc.b  $9F, $BF,	$DF, $FF; 0 ; values for PSG channel volumes
+		dc.b  $9F,$BF,$DF,$FF 	; values for PSG channel volumes
 ; ===========================================================================
 
 GameProgram:
@@ -280,25 +280,23 @@ ChecksumError:
 		move.l	#$C0000000,(VDP_control_port).l
 		moveq	#$3F,d7	; '?'
 
-ChksumErr_RedFill:			; CODE XREF: ROM:000003C8j
+ChksumErr_RedFill:
 		move.w	#$E,(VDP_data_port).l
 		dbf	d7,ChksumErr_RedFill
-
-ChksumErr_InfLoop:			; CODE XREF: ROM:ChksumErr_InfLoopj
-		bra.s	ChksumErr_InfLoop
+		bra.s	*
 ; ===========================================================================
 
-BusError:				; DATA XREF: ROM:00000000o
+BusError:
 		move.b	#2,($FFFFFC44).w
 		bra.s	ErrorMsg_TwoAddresses
 ; ===========================================================================
 
-AddressError:				; DATA XREF: ROM:00000000o
+AddressError:
 		move.b	#4,($FFFFFC44).w
 		bra.s	ErrorMsg_TwoAddresses
 ; ===========================================================================
 
-IllegalInstr:				; DATA XREF: ROM:00000000o
+IllegalInstr:
 		move.b	#6,($FFFFFC44).w
 
 loc_3E4:
@@ -306,50 +304,49 @@ loc_3E4:
 		bra.s	ErrorMessage
 ; ===========================================================================
 
-ZeroDivide:				; DATA XREF: ROM:00000000o
+ZeroDivide:
 		move.b	#8,($FFFFFC44).w
 		bra.s	ErrorMessage
 ; ===========================================================================
 
-ChkInstr:				; DATA XREF: ROM:00000000o
+ChkInstr:
 		move.b	#$A,($FFFFFC44).w
 		bra.s	ErrorMessage
 ; ===========================================================================
 
-TrapvInstr:				; DATA XREF: ROM:00000000o
+TrapvInstr:
 		move.b	#$C,($FFFFFC44).w
 		bra.s	ErrorMessage
 ; ===========================================================================
 
-PriviledgeViolation:			; DATA XREF: ROM:00000000o
+PriviledgeViolation:
 		move.b	#$E,($FFFFFC44).w
 		bra.s	ErrorMessage
 ; ===========================================================================
 
-Trace:					; DATA XREF: ROM:00000000o
+Trace:	
 		move.b	#$10,($FFFFFC44).w
 		bra.s	ErrorMessage
 ; ===========================================================================
 
-Line1010Emu:				; DATA XREF: ROM:00000000o
+Line1010Emu:
 		move.b	#$12,($FFFFFC44).w
 		addq.l	#2,2(sp)
 		bra.s	ErrorMessage
 ; ===========================================================================
 
-Line1111Emu:				; DATA XREF: ROM:00000000o
+Line1111Emu:
 		move.b	#$14,($FFFFFC44).w
 		addq.l	#2,2(sp)
 		bra.s	ErrorMessage
 ; ===========================================================================
 
-ErrorException:				; DATA XREF: ROM:00000000o
+ErrorException:
 		move.b	#0,($FFFFFC44).w
 		bra.s	ErrorMessage
 ; ===========================================================================
 
-ErrorMsg_TwoAddresses:			; CODE XREF: ROM:000003D4j
-					; ROM:000003DCj
+ErrorMsg_TwoAddresses:
 		move	#$2700,sr
 		addq.w	#2,sp
 		move.l	(sp)+,($FFFFFC40).w
@@ -363,15 +360,14 @@ ErrorMsg_TwoAddresses:			; CODE XREF: ROM:000003D4j
 		bra.s	ErrorMsg_Wait
 ; ===========================================================================
 
-ErrorMessage:				; CODE XREF: ROM:000003E8j
-					; ROM:000003F0j ...
+ErrorMessage:
 		move	#$2700,sr
 		movem.l	d0-a7,($FFFFFC00).w
 		bsr.w	ShowErrorMsg
 		move.l	2(sp),d0
 		bsr.w	ShowErrAddress
 
-ErrorMsg_Wait:				; CODE XREF: ROM:00000458j
+ErrorMsg_Wait:
 		bsr.w	Error_WaitForC
 		movem.l	($FFFFFC00).w,d0-a7
 		move	#$2300,sr
@@ -380,14 +376,13 @@ ErrorMsg_Wait:				; CODE XREF: ROM:00000458j
 ; ||||||||||||||| S U B R O U T I N E |||||||||||||||||||||||||||||||||||||||
 
 
-ShowErrorMsg:				; CODE XREF: ROM:00000444p
-					; ROM:00000464p
+ShowErrorMsg:
 		lea	(VDP_data_port).l,a6
 		move.l	#$78000003,(VDP_control_port).l
 		lea	(Art_Text).l,a0
 		move.w	#$27F,d1
 
-Error_LoadGfx:				; CODE XREF: ShowErrorMsg+1Cj
+Error_LoadGfx:
 		move.w	(a0)+,(a6)
 		dbf	d1,Error_LoadGfx
 		moveq	#0,d0
@@ -399,7 +394,7 @@ loc_4A6:
 		move.l	#$46040003,(VDP_control_port).l
 		moveq	#$12,d1
 
-Error_CharsLoop:			; CODE XREF: ShowErrorMsg+44j
+Error_CharsLoop:
 		moveq	#0,d0
 		move.b	(a0)+,d0
 		addi.w	#$790,d0
@@ -409,40 +404,38 @@ Error_CharsLoop:			; CODE XREF: ShowErrorMsg+44j
 ; End of function ShowErrorMsg
 
 ; ===========================================================================
-ErrorText:	dc.w ErrText_Exept-ErrorText ; DATA XREF: ROM:ErrorTexto
-					; ROM:000004CCo ...
-					; "ERROR EXCEPTION    "
-		dc.w ErrText_BusErr-ErrorText ;	"BUS ERROR	    "
-		dc.w ErrText_AddrErr-ErrorText ; "ADDRESS ERROR	     "
-		dc.w ErrText_IllInstr-ErrorText	; "ILLEGAL INSTRUCTION"
-		dc.w ErrText_ZeroDiv-ErrorText ; "@ERO DIVIDE	     "
-		dc.w ErrText_ChkInstr-ErrorText	; "CHK INSTRUCTION    "
-		dc.w ErrText_TrapV-ErrorText ; "TRAPV INSTRUCTION  "
-		dc.w ErrText_PrivViol-ErrorText	; "PRIVILEGE VIOLATION"
-		dc.w ErrText_Trace-ErrorText ; "TRACE		   "
-		dc.w ErrText_Line1010-ErrorText	; "LINE	1010 EMULATOR "
-		dc.w ErrText_Line1111-ErrorText	; "LINE	1111 EMULATOR "
-ErrText_Exept:	dc.b "ERROR EXCEPTION    " ; DATA XREF: ROM:ErrorTexto
-ErrText_BusErr:	dc.b "BUS ERROR          " ; DATA XREF: ROM:000004CCo
-ErrText_AddrErr:dc.b "ADDRESS ERROR      " ; DATA XREF: ROM:000004CEo
-ErrText_IllInstr:dc.b "ILLEGAL INSTRUCTION" ; DATA XREF: ROM:000004D0o
-ErrText_ZeroDiv:dc.b "@ERO DIVIDE        " ; DATA XREF: ROM:000004D2o
-ErrText_ChkInstr:dc.b "CHK INSTRUCTION    " ; DATA XREF: ROM:000004D4o
-ErrText_TrapV:	dc.b "TRAPV INSTRUCTION  " ; DATA XREF: ROM:000004D6o
-ErrText_PrivViol:dc.b "PRIVILEGE VIOLATION" ; DATA XREF: ROM:000004D8o
-ErrText_Trace:	dc.b "TRACE              " ; DATA XREF: ROM:000004DAo
-ErrText_Line1010:dc.b "LINE 1010 EMULATOR " ; DATA XREF: ROM:000004DCo
-ErrText_Line1111:dc.b "LINE 1111 EMULATOR ",0 ; DATA XREF: ROM:000004DEo
+ErrorText:	dc.w ErrText_Exept-ErrorText		; "ERROR EXCEPTION    "
+		dc.w ErrText_BusErr-ErrorText 		; "BUS ERROR          "
+		dc.w ErrText_AddrErr-ErrorText 		; "ADDRESS ERROR      "
+		dc.w ErrText_IllInstr-ErrorText		; "ILLEGAL INSTRUCTION"
+		dc.w ErrText_ZeroDiv-ErrorText 		; "@ERO DIVIDE	      "
+		dc.w ErrText_ChkInstr-ErrorText		; "CHK INSTRUCTION    "
+		dc.w ErrText_TrapV-ErrorText 		; "TRAPV INSTRUCTION  "
+		dc.w ErrText_PrivViol-ErrorText		; "PRIVILEGE VIOLATION"
+		dc.w ErrText_Trace-ErrorText 		; "TRACE              "
+		dc.w ErrText_Line1010-ErrorText		; "LINE	1010 EMULATOR "
+		dc.w ErrText_Line1111-ErrorText		; "LINE	1111 EMULATOR "
+ErrText_Exept:	dc.b "ERROR EXCEPTION    "
+ErrText_BusErr:	dc.b "BUS ERROR          "
+ErrText_AddrErr:dc.b "ADDRESS ERROR      "
+ErrText_IllInstr:dc.b "ILLEGAL INSTRUCTION"
+ErrText_ZeroDiv:dc.b "@ERO DIVIDE        "
+ErrText_ChkInstr:dc.b "CHK INSTRUCTION    "
+ErrText_TrapV:	dc.b "TRAPV INSTRUCTION  "
+ErrText_PrivViol:dc.b "PRIVILEGE VIOLATION"
+ErrText_Trace:	dc.b "TRACE              "
+ErrText_Line1010:dc.b "LINE 1010 EMULATOR "
+ErrText_Line1111:dc.b "LINE 1111 EMULATOR "
+		even
 
 ; ||||||||||||||| S U B R O U T I N E |||||||||||||||||||||||||||||||||||||||
 
 
-ShowErrAddress:				; CODE XREF: ROM:0000044Cp
-					; ROM:00000454p ...
+ShowErrAddress:
 		move.w	#$7CA,(a6)
 		moveq	#7,d2
 
-ShowErrAddress_DigitLoop:		; CODE XREF: ShowErrAddress+Aj
+ShowErrAddress_DigitLoop:
 		rol.l	#4,d0
 		bsr.s	ShowErrDigit
 		dbf	d2,ShowErrAddress_DigitLoop
@@ -453,14 +446,14 @@ ShowErrAddress_DigitLoop:		; CODE XREF: ShowErrAddress+Aj
 ; ||||||||||||||| S U B R O U T I N E |||||||||||||||||||||||||||||||||||||||
 
 
-ShowErrDigit:				; CODE XREF: ShowErrAddress+8p
+ShowErrDigit:
 		move.w	d0,d1
 		andi.w	#$F,d1
 		cmpi.w	#$A,d1
 		bcs.s	ShowErrDigit_NoOverflow
 		addq.w	#7,d1
 
-ShowErrDigit_NoOverflow:		; CODE XREF: ShowErrDigit+Aj
+ShowErrDigit_NoOverflow:
 		addi.w	#$7C0,d1
 		move.w	d1,(a6)
 		rts
@@ -470,8 +463,7 @@ ShowErrDigit_NoOverflow:		; CODE XREF: ShowErrDigit+Aj
 ; ||||||||||||||| S U B R O U T I N E |||||||||||||||||||||||||||||||||||||||
 
 
-Error_WaitForC:				; CODE XREF: ROM:ErrorMsg_Waitp
-					; Error_WaitForC+Aj
+Error_WaitForC:
 		bsr.w	ReadJoypads
 		cmpi.b	#$20,(Ctrl_1_Press).w ; ' '
 		bne.w	Error_WaitForC
@@ -481,7 +473,7 @@ Error_WaitForC:				; CODE XREF: ROM:ErrorMsg_Waitp
 ; ===========================================================================
 ;----------------------------------------------------
 ; Almost identical to Sonic 1, but it uses a different
-; color, used all the way up to Beta 8
+; palette line, used all the way up to Beta 8
 ;----------------------------------------------------
 Art_Text:	incbin	"art/uncompressed/Main font.bin"
 		even
@@ -501,9 +493,7 @@ loc_B12:
 		btst	#6,(Graphics_Flags).w
 		beq.s	loc_B40
 		move.w	#$700,d0
-
-loc_B3C:
-		dbf	d0,loc_B3C
+		dbf	d0,*
 
 loc_B40:
 		move.b	(Vint_routine).w,d0
@@ -552,9 +542,7 @@ loc_BA0:
 		btst	#6,(Graphics_Flags).w
 		beq.s	loc_BBE
 		move.w	#$700,d0
-
-loc_BBA:
-		dbf	d0,loc_BBA
+		dbf	d0,*
 
 loc_BBE:
 		move.w	#1,(Hint_flag).w
@@ -594,26 +582,16 @@ loc_C3E:
 		btst	#6,(Graphics_Flags).w
 		beq.s	loc_C66
 		move.w	#$700,d0
-
-loc_C62:
-		dbf	d0,loc_C62
+		dbf	d0,*
 
 loc_C66:
 		move.w	#1,(Hint_flag).w
 		move.w	($FFFFF624).w,(VDP_control_port).l
 		move.w	#$8230,(VDP_control_port).l
-
-loc_C7C:
 		move.l	($FFFFF61E).w,(Camera_X_pos_copy).w
 		lea	(VDP_control_port).l,a5
-
-loc_C88:
 		move.l	#$94019340,(a5)
-
-loc_C8E:
 		move.l	#$96FC9500,(a5)
-
-loc_C94:
 		move.w	#$977F,(a5)
 		move.w	#$7800,(a5)
 		move.w	#$83,(DMA_data_thunk).w
@@ -661,8 +639,6 @@ Vint_Level:
 		bsr.w	ReadJoypads
 		tst.b	($FFFFF64E).w
 		bne.s	loc_D24
-
-loc_CFE:
 		lea	(VDP_control_port).l,a5
 		move.l	#$94009340,(a5)
 		move.l	#$96FD9580,(a5)
@@ -676,8 +652,6 @@ loc_CFE:
 loc_D24:
 		lea	(VDP_control_port).l,a5
 		move.l	#$94009340,(a5)
-
-loc_D30:
 		move.l	#$96FD9540,(a5)
 		move.w	#$977F,(a5)
 		move.w	#$C000,(a5)
@@ -689,8 +663,6 @@ loc_D48:
 		move.w	#$8230,(VDP_control_port).l
 		lea	(VDP_control_port).l,a5
 		move.l	#$940193C0,(a5)
-
-loc_D60:
 		move.l	#$96F09500,(a5)
 		move.w	#$977F,(a5)
 		move.w	#$7C00,(a5)
@@ -793,8 +765,6 @@ Vint_TitleCard:
 
 loc_EE4:
 		lea	(VDP_control_port).l,a5
-
-loc_EEA:
 		move.l	#$94009340,(a5)
 		move.l	#$96FD9540,(a5)
 		move.w	#$977F,(a5)
@@ -1014,10 +984,6 @@ ReadJoypads:
 		lea	($A10003).l,a1
 		bsr.s	Joypad_Read
 		addq.w	#2,a1
-; End of function ReadJoypads
-
-
-; ||||||||||||||| S U B R O U T I N E |||||||||||||||||||||||||||||||||||||||
 
 
 Joypad_Read:
@@ -1046,14 +1012,13 @@ Joypad_Read:
 ; ||||||||||||||| S U B R O U T I N E |||||||||||||||||||||||||||||||||||||||
 
 
-VDPRegSetup:				; CODE XREF: ROM:0000037Cp
-					; ROM:ChecksumErrorp
+VDPRegSetup:
 		lea	(VDP_control_port).l,a0
 		lea	(VDP_data_port).l,a1
 		lea	(VDPRegSetup_Array).l,a2
 		moveq	#$12,d7
 
-VDPRegSetup_Loop:			; CODE XREF: VDPRegSetup+16j
+VDPRegSetup_Loop:
 		move.w	(a2)+,(a0)
 		dbf	d7,VDPRegSetup_Loop
 		move.w	(VDPReg_01).l,d0
@@ -1066,7 +1031,7 @@ VDPRegSetup_Loop:			; CODE XREF: VDPRegSetup+16j
 		move.l	#$C0000000,(VDP_control_port).l
 		move.w	#$3F,d7	; '?'
 
-VDPRegSetup_ClearCRAM:			; CODE XREF: VDPRegSetup+4Aj
+VDPRegSetup_ClearCRAM:
 		move.w	d0,(a1)
 		dbf	d7,VDPRegSetup_ClearCRAM
 		clr.l	($FFFFF616).w
@@ -1079,7 +1044,7 @@ VDPRegSetup_ClearCRAM:			; CODE XREF: VDPRegSetup+4Aj
 		move.l	#$40000080,(a5)
 		move.w	#0,(VDP_data_port).l
 
-VDPRegSetup_DMAWait:			; CODE XREF: VDPRegSetup+80j
+VDPRegSetup_DMAWait:	
 		move.w	(a5),d1
 		btst	#1,d1
 		bne.s	VDPRegSetup_DMAWait
@@ -1091,8 +1056,8 @@ loc_12FE:
 ; End of function VDPRegSetup
 
 ; ===========================================================================
-VDPRegSetup_Array:dc.w $8004		; DATA XREF: VDPRegSetup+Co
-VDPReg_01:	dc.w $8134,$8230,$8328,$8407; 0	; DATA XREF: VDPRegSetup+1Ar
+VDPRegSetup_Array:dc.w $8004
+VDPReg_01:	dc.w $8134,$8230,$8328,$8407; 0
 		dc.w $857C,$8600,$8700,$8800; 4
 		dc.w $8900,$8A00,$8B00,$8C81; 8
 		dc.w $8D3F,$8E00,$8F02,$9001; 12
@@ -1101,8 +1066,7 @@ VDPReg_01:	dc.w $8134,$8230,$8328,$8407; 0	; DATA XREF: VDPRegSetup+1Ar
 ; ||||||||||||||| S U B R O U T I N E |||||||||||||||||||||||||||||||||||||||
 
 
-ClearScreen:				; CODE XREF: ROM:000030FCp
-					; ROM:00003222p ...
+ClearScreen:
 		lea	(VDP_control_port).l,a5
 		move.w	#$8F01,(a5)
 		move.l	#$940F93FF,(a5)
@@ -1110,7 +1074,7 @@ ClearScreen:				; CODE XREF: ROM:000030FCp
 		move.l	#$40000083,(a5)
 		move.w	#0,(VDP_data_port).l
 
-ClearScreen_DMAWait:			; CODE XREF: ClearScreen+28j
+ClearScreen_DMAWait:
 		move.w	(a5),d1
 		btst	#1,d1
 		bne.s	ClearScreen_DMAWait
@@ -1122,7 +1086,7 @@ ClearScreen_DMAWait:			; CODE XREF: ClearScreen+28j
 		move.l	#$60000083,(a5)
 		move.w	#0,(VDP_data_port).l
 
-ClearScreen_DMA2Wait:			; CODE XREF: ClearScreen+56j
+ClearScreen_DMA2Wait:
 		move.w	(a5),d1
 		btst	#1,d1
 		bne.s	ClearScreen_DMA2Wait
@@ -1135,14 +1099,14 @@ loc_1388:
 		moveq	#0,d0
 		move.w	#$A0,d1	; ' '
 
-ClearScreen_ClearBuffer1:		; CODE XREF: ClearScreen+70j
+ClearScreen_ClearBuffer1:
 		move.l	d0,(a1)+
 		dbf	d1,ClearScreen_ClearBuffer1
 		lea	($FFFFE000).w,a1
 		moveq	#0,d0
 		move.w	#$100,d1
 
-ClearScreen_ClearBuffer2:		; CODE XREF: ClearScreen+80j
+ClearScreen_ClearBuffer2:
 		move.l	d0,(a1)+
 		dbf	d1,ClearScreen_ClearBuffer2
 		rts
@@ -1155,17 +1119,17 @@ ClearScreen_ClearBuffer2:		; CODE XREF: ClearScreen+80j
 ; (making all the marked lines below unused)
 SoundDriverLoad:
 		nop
-                                                ; this would be where the jump i mentioned would be
+                                                	; this would be where the jump i mentioned would be
 		move.w	#$100,(Z80_Bus_Request).l
 		move.w	#$100,(Z80_Reset).l
 		lea	(Kos_Z80).l,a0
-		lea	(Z80_RAM).l,a1          ; The line above got removed, Z80 commands starts here;
-		bsr.w	KosinskiDec             ; move.b #$F3,(a1)+ - di
-		move.w	#0,(Z80_Reset).l        ; move.b #$F3,(a1)+ - di
-		nop                             ; move.b #$C3,(a1)+ - jp
-		nop                             ; move.b #0,(a1)+ - jp address low byte
-		nop                             ; move.b #0,(a1)+ - jp address high byte
-		nop                             ; everything else is the same other than these new lines
+		lea	(Z80_RAM).l,a1          	; The line above got removed, Z80 commands starts here;
+		bsr.w	KosinskiDec             	; move.b #$F3,(a1)+ - di
+		move.w	#0,(Z80_Reset).l        	; move.b #$F3,(a1)+ - di
+		nop                             	; move.b #$C3,(a1)+ - jp
+		nop                             	; move.b #0,(a1)+ - jp address low byte
+		nop                             	; move.b #0,(a1)+ - jp address high byte
+		nop                             	; everything else is the same other than these new lines
 		move.w	#$100,(Z80_Reset).l
 		startZ80
 		rts
@@ -1199,8 +1163,7 @@ PlaySound_Unk:
 ; ||||||||||||||| S U B R O U T I N E |||||||||||||||||||||||||||||||||||||||
 
 
-Pause:					; CODE XREF: ROM:Level_MainLoopp
-					; ROM:loc_516Ap ...
+Pause:
 		nop
 		tst.b	($FFFFFE12).w
 		beq.s	Unpause
@@ -1209,13 +1172,11 @@ Pause:					; CODE XREF: ROM:Level_MainLoopp
 		btst	#7,(Ctrl_1_Press).w
 		beq.s	Pause_DoNothing
 
-Pause_AlreadyPaused:			; CODE XREF: Pause+Cj
+Pause_AlreadyPaused:
 		move.w	#1,(Game_paused).w
+		move.b	#1,(SoundDriver_RAM+PauseSound).w	; later builds sends $FF to $FFFFFFE0
 
-;loc_1424:
-		move.b	#1,(SoundDriver_RAM+3).w	; later builds sends $FF to $FFFFFFE0
-
-Pause_Loop:				; CODE XREF: Pause+5Aj
+Pause_Loop:
 		move.b	#$10,(Vint_routine).w
 		bsr.w	DelayProgram
 		tst.b	(SlowMoCheat_Flag).w
@@ -1227,29 +1188,29 @@ Pause_Loop:				; CODE XREF: Pause+5Aj
 		bra.s	loc_1464
 ; ===========================================================================
 
-Pause_CheckBC:				; CODE XREF: Pause+38j
+Pause_CheckBC:
 		btst	#4,(Ctrl_1_Held).w
 		bne.s	loc_1472
 		btst	#5,(Ctrl_1_Press).w
 		bne.s	loc_1472
 
-Pause_CheckStart:			; CODE XREF: Pause+30j
+Pause_CheckStart:
 		btst	#7,(Ctrl_1_Press).w
 		beq.s	Pause_Loop
 
-loc_1464:				; CODE XREF: Pause+42j
-		move.b	#$80,(SoundDriver_RAM+3).w      ; later builds sends $FE to $FFFFFFE0
+loc_1464:
+		move.b	#$80,(SoundDriver_RAM+PauseSound).w      ; later builds sends $FE to $FFFFFFE0
 
-Unpause:				; CODE XREF: Pause+6j
+Unpause:
 		move.w	#0,(Game_paused).w
 
-Pause_DoNothing:			; CODE XREF: Pause+14j
+Pause_DoNothing:
 		rts
 ; ===========================================================================
 
-loc_1472:				; CODE XREF: Pause+4Aj	Pause+52j
+loc_1472:
 		move.w	#1,(Game_paused).w
-		move.b	#$80,(SoundDriver_RAM+3).w
+		move.b	#$80,(SoundDriver_RAM+PauseSound).w
 		rts
 ; End of function Pause
 
@@ -1257,16 +1218,15 @@ loc_1472:				; CODE XREF: Pause+4Aj	Pause+52j
 ; ||||||||||||||| S U B R O U T I N E |||||||||||||||||||||||||||||||||||||||
 
 
-ShowVDPGraphics:			; CODE XREF: ROM:00003138p
-					; ROM:0000314Cp ...
+ShowVDPGraphics:
 		lea	(VDP_data_port).l,a6
 		move.l	#$800000,d4
 
-ShowVDPGraphics_LineLoop:		; CODE XREF: ShowVDPGraphics+1Aj
+ShowVDPGraphics_LineLoop:
 		move.l	d0,4(a6)
 		move.w	d1,d3
 
-ShowVDPGraphics_TileLoop:		; CODE XREF: ShowVDPGraphics+14j
+ShowVDPGraphics_TileLoop:
 		move.w	(a1)+,(a6)
 		dbf	d3,ShowVDPGraphics_TileLoop
 		add.l	d4,d0
@@ -1358,14 +1318,9 @@ ProcessDMAQueue_Done:
 ; ||||||||||||||| S U B R O U T I N E |||||||||||||||||||||||||||||||||||||||
 
 
-NemesisDec:				; CODE XREF: RunPLC_ROM+28p
-					; ROM:00003110p ...
+NemesisDec:
 		movem.l	d0-a1/a3-a5,-(sp)
-
-loc_1534:
 		lea	(NemesisDec_Output).l,a3
-
-loc_153A:
 		lea	(VDP_data_port).l,a4
 		bra.s	loc_154C
 ; ===========================================================================
@@ -1374,14 +1329,14 @@ NemesisDec_ToRAM:
 		movem.l	d0-a1/a3-a5,-(sp)
 		lea	(NemesisDec_OutputRAM).l,a3
 
-loc_154C:				; CODE XREF: NemesisDec+10j
+loc_154C:
 		lea	(Decomp_Buffer).w,a1
 		move.w	(a0)+,d2
 		lsl.w	#1,d2
 		bcc.s	loc_155A
 		adda.w	#$A,a3
 
-loc_155A:				; CODE XREF: NemesisDec+24j
+loc_155A:
 		lsl.w	#2,d2
 		movea.w	d2,a5
 		moveq	#8,d3
@@ -1401,8 +1356,7 @@ loc_155A:				; CODE XREF: NemesisDec+24j
 ; ||||||||||||||| S U B R O U T I N E |||||||||||||||||||||||||||||||||||||||
 
 
-sub_157A:				; CODE XREF: NemesisDec+42p
-					; sub_157A+4Aj
+sub_157A:
 		move.w	d6,d7
 		subq.w	#8,d7
 		move.w	d5,d1
@@ -1420,16 +1374,16 @@ sub_157A:				; CODE XREF: NemesisDec+42p
 		asl.w	#8,d5
 		move.b	(a0)+,d5
 
-loc_15A2:				; CODE XREF: sub_157A+20j
+loc_15A2:
 		move.b	1(a1,d1.w),d1
 		move.w	d1,d0
 		andi.w	#$F,d1
 		andi.w	#$F0,d0	; 'ð'
 
-loc_15B0:				; CODE XREF: sub_157A+6Ej sub_157A+76j
+loc_15B0:
 		lsr.w	#4,d0
 
-loc_15B2:				; CODE XREF: sub_157A:loc_15C0j
+loc_15B2:
 		lsl.l	#4,d4
 		or.b	d1,d4
 		subq.w	#1,d3
@@ -1437,17 +1391,16 @@ loc_15B2:				; CODE XREF: sub_157A:loc_15C0j
 		jmp	(a3)
 ; ===========================================================================
 
-NemesisDec3:				; CODE XREF: ROM:000015F8j
-					; ROM:00001604j ...
+NemesisDec3:
 		moveq	#0,d4
 		moveq	#8,d3
 
-loc_15C0:				; CODE XREF: sub_157A+3Ej
+loc_15C0:
 		dbf	d0,loc_15B2
 		bra.s	sub_157A
 ; ===========================================================================
 
-loc_15C6:				; CODE XREF: sub_157A+Cj
+loc_15C6:
 		subq.w	#6,d6
 		cmpi.w	#9,d6
 		bcc.s	loc_15D4
@@ -1455,7 +1408,7 @@ loc_15C6:				; CODE XREF: sub_157A+Cj
 		asl.w	#8,d5
 		move.b	(a0)+,d5
 
-loc_15D4:				; CODE XREF: sub_157A+52j
+loc_15D4:
 		subq.w	#7,d6
 		move.w	d5,d1
 		lsr.w	d6,d1
@@ -1472,8 +1425,7 @@ loc_15D4:				; CODE XREF: sub_157A+52j
 
 ; ===========================================================================
 
-NemesisDec_Output:			; DATA XREF: NemesisDec:loc_1534o
-					; RunPLC+10t
+NemesisDec_Output:
 		move.l	d4,(a4)
 		subq.w	#1,a5
 		move.w	a5,d4
@@ -1490,7 +1442,7 @@ NemesisDec_Output_XOR:
 		rts
 ; ===========================================================================
 
-NemesisDec_OutputRAM:			; DATA XREF: NemesisDec+16o
+NemesisDec_OutputRAM:
 		move.l	d4,(a4)+
 		subq.w	#1,a5
 		move.w	a5,d4
@@ -1509,20 +1461,19 @@ NemesisDec_OutputRAM_XOR:
 ; ||||||||||||||| S U B R O U T I N E |||||||||||||||||||||||||||||||||||||||
 
 
-NemesisDec4:				; CODE XREF: NemesisDec+34p RunPLC+2Ap
+NemesisDec4:
 		move.b	(a0)+,d0
 
-loc_1620:				; CODE XREF: NemesisDec4+12j
+loc_1620:
 		cmpi.b	#$FF,d0
 		bne.s	loc_1628
 		rts
 ; ===========================================================================
 
-loc_1628:				; CODE XREF: NemesisDec4+6j
+loc_1628:
 		move.w	d0,d7
 
-loc_162A:				; CODE XREF: NemesisDec4+38j
-					; NemesisDec4+50j
+loc_162A:
 		move.b	(a0)+,d0
 		cmpi.b	#$80,d0
 		bcc.s	loc_1620
@@ -1543,7 +1494,7 @@ loc_162A:				; CODE XREF: NemesisDec4+38j
 		bra.s	loc_162A
 ; ===========================================================================
 
-loc_1658:				; CODE XREF: NemesisDec4+2Ej
+loc_1658:
 		move.b	(a0)+,d0
 		lsl.w	d1,d0
 		add.w	d0,d0
@@ -1551,7 +1502,7 @@ loc_1658:				; CODE XREF: NemesisDec4+2Ej
 		lsl.w	d1,d5
 		subq.w	#1,d5
 
-loc_1664:				; CODE XREF: NemesisDec4+4Cj
+loc_1664:
 		move.w	d7,(a1,d0.w)
 		addq.w	#2,d0
 		dbf	d5,loc_1664
@@ -1562,8 +1513,7 @@ loc_1664:				; CODE XREF: NemesisDec4+4Cj
 ; ||||||||||||||| S U B R O U T I N E |||||||||||||||||||||||||||||||||||||||
 
 
-LoadPLC:				; CODE XREF: ROM:00003BACp
-					; ROM:00003BB2p ...
+LoadPLC:
 		movem.l	a1-a2,-(sp)
 
 loc_1674:
@@ -1573,23 +1523,23 @@ loc_1674:
 		lea	(a1,d0.w),a1
 		lea	($FFFFF680).w,a2
 
-loc_1688:				; CODE XREF: LoadPLC+1Ej
+loc_1688:
 		tst.l	(a2)
 		beq.s	loc_1690
 		addq.w	#6,a2
 		bra.s	loc_1688
 ; ===========================================================================
 
-loc_1690:				; CODE XREF: LoadPLC+1Aj
+loc_1690:
 		move.w	(a1)+,d0
 		bmi.s	loc_169C
 
-loc_1694:				; CODE XREF: LoadPLC+28j
+loc_1694:
 		move.l	(a1)+,(a2)+
 		move.w	(a1)+,(a2)+
 		dbf	d0,loc_1694
 
-loc_169C:				; CODE XREF: LoadPLC+22j
+loc_169C:
 		movem.l	(sp)+,a1-a2
 		rts
 ; End of function LoadPLC
@@ -4534,7 +4484,7 @@ loc_3AEC:				; CODE XREF: ROM:00003AEEj
 
 loc_3AF8:				; CODE XREF: ROM:00003ADCj
 					; ROM:loc_3AF8j
-		bra.s	loc_3AF8
+		bra.s	*
 
 ; ||||||||||||||| S U B R O U T I N E |||||||||||||||||||||||||||||||||||||||
 
@@ -4754,10 +4704,10 @@ loc_3D2A:
 		move.b	#$21,($FFFFB380).w ; '!'
 
 loc_3D6C:
-		tst.w	(Two_player_mode).w ; Is 2 player mode on?
-		bne.s	LevelInit_LoadTails ; if so, skip this condition
-		cmpi.b	#3,(Current_Zone).w ; Is this Emerald Hill?
-		beq.s	LevelInit_SkipTails ; If so, skip loading Tails
+		tst.w	(Two_player_mode).w 	; Is 2 player mode on?
+		bne.s	LevelInit_LoadTails 	; if so, skip this condition
+		cmpi.b	#3,(Current_Zone).w 	; Is this Emerald Hill?
+		beq.s	LevelInit_SkipTails 	; If so, skip loading Tails
 
 LevelInit_LoadTails:
 		move.b	#2,($FFFFB040).w
@@ -5047,32 +4997,29 @@ locret_40C6:				; CODE XREF: DynamicWaterHeight+1Ej
 ; End of function DynamicWaterHeight
 
 ; ===========================================================================
-DynWater_Index:	dc.w DynWater_HPZ1-DynWater_Index; 0 ; DATA XREF: ROM:DynWater_Indexo
-					; ROM:DynWater_Index+2o ...
-		dc.w DynWater_HPZ2-DynWater_Index; 1 ; leftover	from Sonic 1's LZ2
+DynWater_Index:	dc.w DynWater_HPZ1-DynWater_Index; 0
+		dc.w DynWater_HPZ2-DynWater_Index; 1 - leftover	from Sonic 1's LZ2
 		dc.w DynWater_HPZ3-DynWater_Index; 2
 		dc.w DynWater_HPZ4-DynWater_Index; 3
 ; ===========================================================================
 
-DynWater_HPZ1:				; You can control the water using P2's controller, rather interesting
-					; since you can't even do this in Simon Wai or any later builds
+DynWater_HPZ1:						; You can control the water using P2's controller, rather interesting
+							; since you can't even do this in Simon Wai or any later builds
 
-		btst	#0,(Ctrl_2_Held).w; is P2 pressing up?
-		beq.s	loc_40E2	; if not, branch
-		tst.w	(TargetWaterHeight).w   ; is the water height at it's lowest?
-		beq.s	loc_40E2	; if so, don't keep decreasing the height and causing underflow
-		subq.w	#1,(TargetWaterHeight).w; subtract 1 from height
+		btst	#0,(Ctrl_2_Held).w 		; is P2 pressing up?
+		beq.s	loc_40E2			; if not, branch
+		tst.w	(TargetWaterHeight).w   	; is the water height at it's lowest?
+		beq.s	loc_40E2			; if so, don't keep decreasing the height and causing underflow
+		subq.w	#1,(TargetWaterHeight).w 	; subtract 1 from height
 
-loc_40E2:				; CODE XREF: ROM:000040D6j
-					; ROM:000040DCj
-		btst	#1,(Ctrl_2_Held).w; is P2 pressing down?
-		beq.s	locret_40F6	; if not, return
-		cmpi.w	#$700,(TargetWaterHeight).w; is the water height $700?
-		beq.s	locret_40F6	; if not, return
-		addq.w	#1,(TargetWaterHeight).w; add 1 to height
+loc_40E2:
+		btst	#1,(Ctrl_2_Held).w 		; is P2 pressing down?
+		beq.s	locret_40F6			; if not, return
+		cmpi.w	#$700,(TargetWaterHeight).w 	; is the water height $700?
+		beq.s	locret_40F6			; if so, return
+		addq.w	#1,(TargetWaterHeight).w 	; add 1 to height
 
-locret_40F6:				; CODE XREF: ROM:000040E8j
-					; ROM:000040F0j
+locret_40F6:
 		rts
 ; ===========================================================================
 
@@ -9062,7 +9009,7 @@ loc_711E:
 		lea	(Level_Layout+$80).w,a4
 		move.w	#$6000,d2
 		tst.b	(Current_Zone).w		; is it Green Hill Zone?
-		beq.w	Draw_GHZBG		; if yes, branch
+		beq.w	Draw_GHZBG			; if yes, branch
 ; End of function DrawInitialBG
 
 
@@ -9206,7 +9153,7 @@ loc_725A:
 ; >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ; loadZoneBlockMaps
 
-; Loads block and bigblock mappings for the current Zone.
+; Loads block and chunk mappings for the current Zone.
 
 ; MainLevelLoadBlock:
 loadZoneBlockMaps:
@@ -9282,7 +9229,7 @@ loc_72F4:
 		beq.s	Level_LoadChunks	; if yes, branch
 ; ===========================================================================
 ; Load Green Hill Zone's chunks, which use a different format and compression.
-; Also tries to do this with Labyrinth but doesn't work due to using
+; It also tries to do this with Labyrinth but doesn't work due to using
 ; Chemical Plant Zone's data.
 ; Level_LoadGHZChunks:
 		move.l	a2,-(sp)
@@ -9315,17 +9262,17 @@ loc_7348:
 		move.w	(a2),d0
 		andi.w	#$FF,d0
 		cmpi.w	#$103,(Current_ZoneAndAct).w	; is it Labyrinth Zone Act 4?
-		bne.s	loc_735E		; if not, branch
-		moveq	#$C,d0			; load the SBZ3/LZ4 palette
+		bne.s	loc_735E			; if not, branch
+		moveq	#$C,d0				; load the SBZ3/LZ4 palette
 
 loc_735E:
 		cmpi.w	#$501,(Current_ZoneAndAct).w	; is it Hill Top Zone Act 2?
-		beq.s	loc_736E		; if yes, branch
+		beq.s	loc_736E			; if yes, branch
 		cmpi.w	#$502,(Current_ZoneAndAct).w	; is it Hill Top Zone Act 4?
-		bne.s	loc_7370		; if not, branch
+		bne.s	loc_7370			; if not, branch
 
 loc_736E:
-		moveq	#$E,d0			; load the SBZ2 palette (same as Act 1's, just with different pointers)
+		moveq	#$E,d0				; load the SBZ2 palette (same as Act 1's, just with a different pointer)
 
 loc_7370:
 		bsr.w	PalLoad1
@@ -10016,7 +9963,7 @@ locret_796E:
 DynResize_EHZ2_03:
 		tst.b	(Boss_defeated_flag).w		; has the boss been defeated?
 		beq.s	DynResize_EHZ3
-		move.b	#0,(Game_Mode).w
+		move.b	#0,(Game_Mode).w 		; go back to the SEGA screen if so
 
 DynResize_EHZ3:
 		rts
@@ -10212,7 +10159,7 @@ loc_7AF4:
 		move.b	#$83,(a1)		; load Obj83 (SBZ2 Eggman cutscene in Sonic 1, blank slot here)
 		addq.b	#2,(Dynamic_Resize_Routine).w
 		moveq	#PLCID_S1EggmanSBZ2,d0
-		bra.w	LoadPLC			; load patterns (causes game to crash due to reading data that isn't a list)
+		bra.w	LoadPLC			; load patterns (causes the game to crash due to reading data that isn't a list)
 ; ===========================================================================
 
 locret_7B10:
@@ -10262,7 +10209,7 @@ loc_7B5A:
 		cmpi.w	#$2148,(Camera_X_pos).w
 		bcs.s	loc_7B6C
 		addq.b	#2,(Dynamic_Resize_Routine).w
-		moveq	#PLCID_S1FZBoss,d0		; load patterns (again, causes game to crash due to reading data that isn't a list)
+		moveq	#PLCID_S1FZBoss,d0		; load patterns (again, causes the game to crash due to reading data that isn't a list)
 		bsr.w	LoadPLC
 
 loc_7B6C:
@@ -12540,7 +12487,7 @@ loc_96E4:				; CODE XREF: ROM:000096D8j
 		move.b	#1,$32(a0)
 		bsr.w	SingleObjectLoad
 		bne.s	loc_972E
-		move.b	#$20,0(a1) ; This object is still here but it's not referenced in the object pointers, so if you restore functionality to this then you'll have to change this.
+		move.b	#$20,0(a1) 	; This object is still here but it's not referenced in the object pointers, so if you restore functionality to this then you'll have to change this.
 		move.w	8(a0),8(a1)
 		move.w	$C(a0),$C(a1)
 		move.w	#$FF00,$10(a1)
@@ -34607,7 +34554,7 @@ S1SS_MapIndex:	dc.l S1Map_SS_R		; DATA XREF: S1SS_Load+90o
 		dc.l S1Map_SS_Glass
 		dc.w $45F0
 ;
-; note: for some reason they didn't convert the mappings of these objects to the sonic 2 format
+; NOTE: for some reason they didn't convert the mappings of these objects to the sonic 2 format
 ; perhaps, that'll explain why the special stage is so unstable if you manage to get it to load
 ; at all on low accuracy emulators (like Kega Fusion, and Android emulators)
 ;
@@ -35755,10 +35702,10 @@ LoadLevelBlocks_2P:
 		; is overwritten with VRAM data
 		move.w	(a0)+,d0
 		move.w	d0,d1
-		andi.w	#$F800,d0	; d0 holds the preserved non-tile data
-		andi.w	#$7FF,d1	; d1 holds the tile index (overwrites loop counter!)
-		lsr.w	#1,d1		; half tile index
-		or.w	d1,d0		; put them back together
+		andi.w	#$F800,d0		; d0 holds the preserved non-tile data
+		andi.w	#$7FF,d1		; d1 holds the tile index (overwrites loop counter!)
+		lsr.w	#1,d1			; half tile index
+		or.w	d1,d0			; put them back together
 		move.w	d0,(a1)+
 		dbf	d1,LoadLevelBlocks_2P	; loop using d1, which we just overwrote
 		rts
@@ -36530,7 +36477,7 @@ Debug_Init:				; DATA XREF: ROM:DebugIndexo
 		andi.w	#$3FF,(Camera_BG_Y_pos).w
 		move.b	#0,$1A(a0)
 		move.b	#0,$1C(a0)
-		cmpi.b	#$10,(Game_Mode).w	; Sonic 1 leftover:is this the special stage? (weirdly this was left in later builds)
+		cmpi.b	#$10,(Game_Mode).w	; Sonic 1 leftover: is this the special stage? (weirdly this was left in later builds as well)
 		bne.s	loc_1BB04		; if not, branch
 		moveq	#6,d0			; force it to use the 6th object list (ending/special stage)
 		bra.s	loc_1BB0A		; skip attempting to get the current zone ID
@@ -36970,12 +36917,12 @@ levartptrs macro tiles,plc1,blocks,plc2,chunks,music,palette
 
 ; MainLoadBlocks:
 LevelArtPointers:
-	levartptrs Nem_GHZ, PLCID_GHZ, Map16_GHZ, PLCID_GHZ2, Chameleon_Map128_GHZ, $81, 4	; GHZ - GREEN HILL ZONE
-	levartptrs Nem_CPZ, PLCID_LZ,  Map16_CPZ, PLCID_LZ2,  Map128_CPZ, $82, 5		; LZ - LABYRINTH ZONE
-	levartptrs Nem_CPZ, PLCID_CPZ, Map16_CPZ, PLCID_CPZ2, Map128_CPZ, $83, 6		; CPZ - CHEMICAL PLANT ZONE
-	levartptrs Nem_EHZ, PLCID_EHZ, Map16_EHZ, PLCID_EHZ2, Map128_EHZ, $84, 7		; EHZ - EMERALD HILL ZONE
-	levartptrs Nem_HPZ, PLCID_HPZ, Map16_HPZ, PLCID_HPZ2, Map128_HPZ, $85, 8		; HPZ - HIDDEN PALACE ZONE
-	levartptrs Nem_EHZ, PLCID_HTZ, Map16_EHZ, PLCID_HTZ2, Map128_EHZ, $86, 9		; HTZ - HILL TOP ZONE
+	levartptrs Nem_GHZ, PLCID_GHZ, Map16_GHZ, PLCID_GHZ2, Chameleon_Map128_GHZ, $81, 4		; GHZ - GREEN HILL ZONE
+	levartptrs Nem_CPZ, PLCID_LZ,  Map16_CPZ, PLCID_LZ2,  Map128_CPZ, $82, 5							; LZ - LABYRINTH ZONE
+	levartptrs Nem_CPZ, PLCID_CPZ, Map16_CPZ, PLCID_CPZ2, Map128_CPZ, $83, 6							; CPZ - CHEMICAL PLANT ZONE
+	levartptrs Nem_EHZ, PLCID_EHZ, Map16_EHZ, PLCID_EHZ2, Map128_EHZ, $84, 7							; EHZ - EMERALD HILL ZONE
+	levartptrs Nem_HPZ, PLCID_HPZ, Map16_HPZ, PLCID_HPZ2, Map128_HPZ, $85, 8							; HPZ - HIDDEN PALACE ZONE
+	levartptrs Nem_EHZ, PLCID_HTZ, Map16_EHZ, PLCID_HTZ2, Map128_EHZ, $86, 9							; HTZ - HILL TOP ZONE
 	levartptrs Nem_GHZ, 0,         Map16_GHZ, 0,          Chameleon_Map128_GHZ, $86, $13	; S1E - SONIC 1 ENDING (CRASHES)
 	even
 ; ===========================================================================
@@ -37142,7 +37089,7 @@ PLC_HPZ2:	dc.w 1
 		dc.l Nem_Dinobot
 		dc.w $A000
 		dc.l Nem_Bat
-word_1C1E4:	dc.w $A600	; At this point the rest of the HPZ plc data is not read because it is cut by this label
+word_1C1E4:	dc.w $A600	; At this point the rest of the PLC's are not read because it is cut off
 		dc.l Nem_Crocobot
 		dc.w $6000
 		dc.l Nem_Buzzbomber
@@ -37274,16 +37221,16 @@ PLC_HTZAnimals:	dc.w 1
 		even
 ; ===========================================================================
 ;----------------------------------------------------------------------------
-; Unknown leftover art from an unknown prototype game
-; I...don't know what this is..
+; Unknown leftover data from an unknown prototype game
+; I haven't had much luck identifying what kind of data this is...
 ;----------------------------------------------------------------------------
 LeftoverArt_Unknown: incbin "art/uncompressed/Unknown.bin"
 		     even
-AngleMap_GHZ:	incbin	"collision/Curve and resistance mapping (Sonic 1).bin"   ;Sonic 1 Angle Map Data used by GHZ but the code load Sonic 2 Angle Map Data at the start of the level 
+AngleMap_GHZ:	incbin	"collision/Curve and resistance mapping (Sonic 1).bin"   	; Sonic 1 angle map Data used by GHZ but the code still loads the Sonic 2 version anyway.
 		even
 AngleMap:	incbin	"collision/Curve and resistance mapping.bin"
 		even
-ColArray1_GHZ:	incbin	"collision/Collision array (Sonic 1).bin"                ;Sonic 1 Col Array Data used by GHZ but the code load Sonic 2 Col Array Data at the start of the level 
+ColArray1_GHZ:	incbin	"collision/Collision array (Sonic 1).bin"                ; Sonic 1 collision array Data used by GHZ but the code still loads the Sonic 2 version anyway.
 		even
 ColArray1:	incbin	"collision/Collision array 1.bin"
 		even
@@ -37350,9 +37297,8 @@ Art_UnkZone_7:  incbin	"art/uncompressed/Unkown animated zone tiles 7.bin"
 		even
 Art_UnkZone_8:	incbin	"art/uncompressed/Unkown animated zone tiles 8.bin"
 		even
-LevelLayout_Index:dc.w Level_GHZ1-LevelLayout_Index,Level_GHZBg-LevelLayout_Index,Level_Null-LevelLayout_Index;	0
-					; DATA XREF: loadLevelLayout2+16o
-					; loadLevelLayout2+6Co	...
+LevelLayout_Index:
+		dc.w Level_GHZ1-LevelLayout_Index,Level_GHZBg-LevelLayout_Index,Level_Null-LevelLayout_Index;	0
 		dc.w Level_GHZ2-LevelLayout_Index,Level_GHZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 3
 		dc.w Level_GHZ3-LevelLayout_Index,Level_GHZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 6
 		dc.w Level_CPZ1-LevelLayout_Index,Level_CPZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 9
@@ -37703,12 +37649,13 @@ Leftover_50A9C:	incbin	"leftovers/50A9C.bin"
 		even
 
 ; SoundDriver:
-; Sonic 2 Proto Driver based in S1 sound driver
+; This is basically just the vanilla Sonic 1 sound driver.
 		include	"NA_Sounddriver.asm"
 
 ;---------------------------------------------------------------------------------------
 ; Art, mappings and DPLCs for common objects
 ;---------------------------------------------------------------------------------------
+		bankalign $8000 	; DMA accesses cannot be beyond $8000 bytes
 Art_Sonic:	incbin	"art/uncompressed/Sonic's art.bin"
 		even
 Map_Sonic:	incbin	"mappings/sprite/Sonic.bin"			; some frames do not display correctly for some reason (this only happens on Sonmaped and Flex2 but within the game they display correctly)
@@ -38278,14 +38225,14 @@ Map128_CPZ:     incbin	"mappings/128x128/CPZ.bin"
 Map16_GHZ:      incbin	"mappings/16x16/GHZ.bin"
 		even
 Nem_GHZ:	incbin	"art/nemesis/GHZ.bin"
-; Remains of Sonic 1: GHZ Secondary Art is not used because the secondary and primary art already exist in the same file so it becomes a duplicate
+; Sonic 1 Leftover - GHZ's secondary art is not used because the secondary and primary art already exist in the one set of tiles.
 Nem_GHZ2:       incbin	"art/nemesis/GHZ2.bin"
 		even
 Chameleon_Map128_GHZ:incbin	"mappings/128x128/GHZ.bin"
 				even
 ;
 ; yet another leftover chunk
-; TODO: can someone identify what's actually in this chunk?
+; TODO: identify what's actually in this chunk
 ;
 Leftover_E0178: incbin	"leftovers/E0178.bin"
 		even

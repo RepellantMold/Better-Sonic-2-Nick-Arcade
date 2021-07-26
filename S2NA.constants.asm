@@ -46,18 +46,18 @@ width_pixels =		$19
 mapping_frame =		$1A
 ; ---------------------------------------------------------------------------
 ; conventions followed by most objects:
-x_vel  = 			$10 ; and $11 ; horizontal velocity
-y_vel  = 			$12 ; and $13 ; vertical velocity
+x_vel  = 		$10 ; and $11 ; horizontal velocity
+y_vel  = 		$12 ; and $13 ; vertical velocity
 y_radius  = 		$16 ; collision width / 2
 x_radius  = 		$17 ; collision height / 2
 anim_frame  = 		$1B
-anim  = 			$1C
+anim  = 		$1C
 next_anim  = 		$1D
 anim_frame_duration  = 	$1E
 status  = 		$22 ; note: exact meaning depends on the object... for sonic/tails: bit 0: leftfacing. bit 1: inair. bit 2: spinning. bit 3: onobject. bit 4: rolljumping. bit 5: pushing. bit 6: underwater.
 routine  = 		$24
 routine_secondary  = 	$25
-angle  = 			$26 ; angle about the z = 0 axis (360 degrees  =  256)
+angle  = 		$26 ; angle about the z = 0 axis (360 degrees  =  256)
 ; ---------------------------------------------------------------------------
 ; conventions followed by many objects but NOT sonic/tails:
 collision_flags  = 	$20
@@ -80,13 +80,13 @@ invulnerable_time  = 	$30 ; and $31 ; time remaining until you stop blinking
 invincibility_time  = 	$32 ; and $33 ; remaining
 speedshoes_time  = 	$34 ; and $35 ; remaining
 next_tilt  = 		$36 ; angle on ground in front of sprite
-tilt  = 			$37 ; angle on ground
+tilt  = 		$37 ; angle on ground
 stick_to_convex  = 	$38 ; 0 for normal, 1 to make Sonic stick to convex surfaces like the rotating discs in Sonic 1 and 3 (unused in Sonic 2 but fully functional)
-spindash_flag  = 		$39 ; 0 for normal, 1 for charging a spindash or forced rolling
+spindash_flag  = 	$39 ; 0 for normal, 1 for charging a spindash or forced rolling
 spindash_counter  = 	$3A ; and $3B
 jumping  = 		$3C
 interact  = 		$3D ; RAM address of the last object Sonic stood on, minus $FFFFB000 and divided by $40
-layer  = 			$3E ; collision plane, track switching...
+layer  = 		$3E ; collision plane, track switching...
 layer_plus  = 		$3F ; always same as layer+1 ?? used for collision somehow
 
 ; ---------------------------------------------------------------------------
@@ -286,15 +286,15 @@ TitleScreenCpresses:		equ	$FFFFFFE6		; 2 bytes - used to detect the C button (ti
 Debug_mode_flag:		equ	$FFFFFFFA		; 2 bytes
 
 ; Joypad variables
-Ctrl_1_Logical: 		equ 	$FFFFF602 ; 2 bytes
-Ctrl_1_Held_Logical: 		equ 	Ctrl_1_Logical ; 1 byte - $FFFFF602, listed like this in case of RAM shifting
-Ctrl_1_Press_Logical: 		equ 	Ctrl_1_Logical+1 ; 1 byte - $FFFFF603, listed like this in case of RAM shifting
-Ctrl_1: 			equ 	Ctrl_1_Press_Logical+1 ; 2 bytes - FFFFF604, listed like this in case of RAM shifting
-Ctrl_1_Held: 			equ 	Ctrl_1 ; 1 byte  - $FFFFF604, listed like this in case of RAM shifting
-Ctrl_1_Press: 			equ 	Ctrl_1+1 ; 1 byte  - $FFFFF605, listed like this in case of RAM shifting
-Ctrl_2: 			equ 	Ctrl_1_Press+1 ; 2 bytes - $FFFFF606, listed like this in case of RAM shifting
-Ctrl_2_Held: 			equ 	Ctrl_2 	; 1 byte  - $FFFFF606, listed like this in case of RAM shifting
-Ctrl_2_Press: 			equ 	Ctrl_2+1 ; 1 byte  - $FFFFF607, listed like this in case of RAM shifting
+Ctrl_1_Logical: 		equ 	$FFFFF602 		; 2 bytes
+Ctrl_1_Held_Logical: 		equ 	Ctrl_1_Logical 		; 1 byte - $FFFFF602, listed like this in case of RAM shifting
+Ctrl_1_Press_Logical: 		equ 	Ctrl_1_Logical+1 	; 1 byte - $FFFFF603, listed like this in case of RAM shifting
+Ctrl_1: 			equ 	Ctrl_1_Press_Logical+1 	; 2 bytes - FFFFF604, listed like this in case of RAM shifting
+Ctrl_1_Held: 			equ 	Ctrl_1 			; 1 byte  - $FFFFF604, listed like this in case of RAM shifting
+Ctrl_1_Press: 			equ 	Ctrl_1+1 		; 1 byte  - $FFFFF605, listed like this in case of RAM shifting
+Ctrl_2: 			equ 	Ctrl_1_Press+1 		; 2 bytes - $FFFFF606, listed like this in case of RAM shifting
+Ctrl_2_Held: 			equ 	Ctrl_2 			; 1 byte  - $FFFFF606, listed like this in case of RAM shifting
+Ctrl_2_Press: 			equ 	Ctrl_2+1 		; 1 byte  - $FFFFF607, listed like this in case of RAM shifting
 Control_locked:			equ	$FFFFF7CC		; 1 byte
 Object_control:			equ	$FFFFF7C8		; 1 byte
 
@@ -310,7 +310,7 @@ Graphics_Flags:			equ	$FFFFFFF8
 Checksum_fourcc:		equ	$FFFFFFFC		; writes "init" here
 
 ; ---------------------------------------------------------------------------
-; Sound Driver RAM variables; starts at $FFFFF000 and ends at $FFFFF5BF.
+; Sound Driver RAM variables, starts at $FFFFF000 and ends at $FFFFF5BF.
 PauseSound:			equ	3
 QueueToPlay:			equ	9	; if NOT set to $80, means new index was requested by 68K
 SFXToPlay:			equ	$A	; when Genesis wants to play "normal" sound, it writes it here
