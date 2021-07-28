@@ -37165,7 +37165,7 @@ AngleMap_GHZ:	incbin	"collision/Curve and resistance mapping (Sonic 1).bin"   	;
 		even
 AngleMap:	incbin	"collision/Curve and resistance mapping.bin"
 		even
-ColArray1_GHZ:	incbin	"collision/Collision array (Sonic 1).bin"                ; Sonic 1 collision array Data used by GHZ but the code still loads the Sonic 2 version anyway.
+ColArray1_GHZ:	incbin	"collision/Collision array (Sonic 1).bin"                	; Sonic 1 collision array Data used by GHZ but the code still loads the Sonic 2 version anyway.
 		even
 ColArray1:	incbin	"collision/Collision array 1.bin"
 		even
@@ -37379,66 +37379,18 @@ ObjPos_LZ2:	incbin	"level/objects/NULL.bin"
 		even
 ObjPos_LZ3:	incbin	"level/objects/NULL.bin"
 		even
-ObjPos_S1LZ1pf1:dc.w	 7,$1078, $21A	; 0 ; DATA XREF: ROM:ObjPos_Indexo
-		dc.w	 0,$10BE, $291	; 3
-		dc.w	 2,$10BE, $307	; 6
-		dc.w	 2,$10BE, $37E	; 9
-		dc.w	 2,$105C, $390	; 12
-		dc.w	 4,$1022, $352	; 15
-		dc.w	 5,$1022, $2DB	; 18
-		dc.w	 5,$1022, $265	; 21
-		dc.w	 5		; 24
-ObjPos_S1LZ1pf2:dc.w	 7,$127E, $280	; 0 ; DATA XREF: ROM:ObjPos_Indexo
-		dc.w   $10,$12CE, $305	; 3
-		dc.w   $12,$12CE, $38A	; 6
-		dc.w   $12,$12CE, $40F	; 9
-		dc.w   $12,$12A7, $46E	; 12
-		dc.w   $13,$1232, $40F	; 15
-		dc.w   $14,$1232, $38A	; 18
-		dc.w   $14,$1232, $305	; 21
-		dc.w   $14		; 24
-ObjPos_S1LZ2pf1:dc.w	 7, $D22, $483	; 0 ; DATA XREF: ROM:ObjPos_Indexo
-		dc.w   $21, $D9C, $482	; 3
-		dc.w   $20, $DAE, $4EA	; 6
-		dc.w   $23, $DAE, $564	; 9
-		dc.w   $23, $DAE, $5DD	; 12
-		dc.w   $23, $D34, $5DE	; 15
-		dc.w   $22, $D22, $576	; 18
-		dc.w   $21, $D22, $4FC	; 21
-		dc.w   $21		; 24
-ObjPos_S1LZ2pf2:dc.w	 7, $D62, $3A2	; 0 ; DATA XREF: ROM:ObjPos_Indexo
-		dc.w   $30, $DD4, $3A2	; 3
-		dc.w   $31, $DEE, $3FA	; 6
-		dc.w   $32, $DEE, $46C	; 9
-		dc.w   $32, $DEE, $4DD	; 12
-		dc.w   $32, $D7C, $4DE	; 15
-		dc.w   $33, $D62, $486	; 18
-		dc.w   $30, $D62, $414	; 21
-		dc.w   $30		; 24
-ObjPos_S1LZ3pf1:dc.w	$B, $CAD, $242	; 0 ; DATA XREF: ROM:ObjPos_Indexo
-		dc.w   $41, $D2D, $242	; 3
-		dc.w   $41, $DAC, $242	; 6
-		dc.w   $41, $DDE, $28F	; 9
-		dc.w   $42, $DDE, $30E	; 12
-		dc.w   $42, $DDE, $38D	; 15
-		dc.w   $42, $DB0, $3DE	; 18
-		dc.w   $43, $D31, $3DE	; 21
-		dc.w   $43, $CB2, $3DE	; 24
-		dc.w   $43, $C52, $3BF	; 27
-		dc.w   $44, $C52, $340	; 30
-		dc.w   $44, $C52, $2C1	; 33
-		dc.w   $44		; 36
-ObjPos_S1LZ3pf2:dc.w	 8,$1252, $20A	; 0 ; DATA XREF: ROM:ObjPos_Indexo
-		dc.w   $50,$12D2, $20A	; 3
-		dc.w   $51,$1352, $20A	; 6
-		dc.w   $51,$13D2, $20A	; 9
-		dc.w   $51,$13DE, $27E	; 12
-		dc.w   $52,$139E, $2BE	; 15
-		dc.w   $53,$131E, $2BE	; 18
-		dc.w   $53,$129E, $2BE	; 21
-		dc.w   $53,$1252, $28A	; 24
-		dc.w   $50,$FFFF,    0	; 27
-		dc.w	 0		; 30
+ObjPos_S1LZ1pf1:incbin	"level/objects/platforms/LZ1_1.bin"
+		even
+ObjPos_S1LZ1pf2:incbin	"level/objects/platforms/LZ1_2.bin"
+		even
+ObjPos_S1LZ2pf1:incbin	"level/objects/platforms/LZ2_1.bin"
+		even
+ObjPos_S1LZ2pf2:incbin	"level/objects/platforms/LZ2_2.bin"
+		even
+ObjPos_S1LZ3pf1:incbin	"level/objects/platforms/LZ3_1.bin"
+		even
+ObjPos_S1LZ3pf2:incbin	"level/objects/platforms/LZ3_2.bin"
+		even
 ObjPos_CPZ1:    incbin	"level/objects/CPZ_1.bin"
 		even
 ObjPos_CPZ2:	incbin	"level/objects/NULL.bin"
@@ -37463,61 +37415,18 @@ ObjPos_HTZ2:	incbin	"level/objects/NULL.bin"
 		even
 ObjPos_HTZ3:	incbin	"level/objects/HTZ_3.bin"
 		even
-ObjPos_S1SBZ1pf1:dc.w 7			; DATA XREF: ROM:ObjPos_Indexo
-		dc.w  $E14, $370,    0	; 0
-		dc.w  $E5A, $34D,    1	; 3
-		dc.w  $EA0, $32A,    1	; 6
-		dc.w  $EE7, $307,    1	; 9
-		dc.w  $EEF, $340,    2	; 12
-		dc.w  $EA9, $363,    3	; 15
-		dc.w  $E63, $386,    3	; 18
-		dc.w  $E1C, $3A9,    3	; 21
-ObjPos_S1SBZ1pf2:dc.w 7			; DATA XREF: ROM:ObjPos_Indexo
-		dc.w  $F14, $2E0,  $10	; 0
-		dc.w  $F5A, $2BD,  $11	; 3
-		dc.w  $FA0, $29A,  $11	; 6
-		dc.w  $FE7, $277,  $11	; 9
-		dc.w  $FEF, $2B0,  $12	; 12
-		dc.w  $FA9, $2D3,  $13	; 15
-		dc.w  $F63, $2F6,  $13	; 18
-		dc.w  $F1C, $319,  $13	; 21
-ObjPos_S1SBZ1pf3:dc.w 7			; DATA XREF: ROM:ObjPos_Indexo
-		dc.w $1014, $270,  $20	; 0
-		dc.w $105A, $24D,  $21	; 3
-		dc.w $10A0, $22A,  $21	; 6
-		dc.w $10E7, $207,  $21	; 9
-		dc.w $10EF, $240,  $22	; 12
-		dc.w $10A9, $263,  $23	; 15
-		dc.w $1063, $286,  $23	; 18
-		dc.w $101C, $2A9,  $23	; 21
-ObjPos_S1SBZ1pf4:dc.w 7			; DATA XREF: ROM:ObjPos_Indexo
-		dc.w  $F14, $570,  $30	; 0
-		dc.w  $F5A, $54D,  $31	; 3
-		dc.w  $FA0, $52A,  $31	; 6
-		dc.w  $FE7, $507,  $31	; 9
-		dc.w  $FEF, $540,  $32	; 12
-		dc.w  $FA9, $563,  $33	; 15
-		dc.w  $F63, $586,  $33	; 18
-		dc.w  $F1C, $5A9,  $33	; 21
-ObjPos_S1SBZ1pf5:dc.w 7			; DATA XREF: ROM:ObjPos_Indexo
-		dc.w $1B14, $670,  $40	; 0
-		dc.w $1B5A, $64D,  $41	; 3
-		dc.w $1BA0, $62A,  $41	; 6
-		dc.w $1BE7, $607,  $41	; 9
-		dc.w $1BEF, $640,  $42	; 12
-		dc.w $1BA9, $663,  $43	; 15
-		dc.w $1B63, $686,  $43	; 18
-		dc.w $1B1C, $6A9,  $43	; 21
-ObjPos_S1SBZ1pf6:dc.w	  7,$1C14, $5E0	 ; 0 ; DATA XREF: ROM:ObjPos_Indexo
-		dc.w   $50,$1C5A, $5BD	; 3
-		dc.w   $51,$1CA0, $59A	; 6
-		dc.w   $51,$1CE7, $577	; 9
-		dc.w   $51,$1CEF, $5B0	; 12
-		dc.w   $52,$1CA9, $5D3	; 15
-		dc.w   $53,$1C63, $5F6	; 18
-		dc.w   $53,$1C1C, $619	; 21
-		dc.w   $53,$FFFF,    0	; 24
-		dc.w	 0		; 27
+ObjPos_S1SBZ1pf1:incbin	"level/objects/platforms/SBZ1_1.bin"
+		even
+ObjPos_S1SBZ1pf2:incbin	"level/objects/platforms/SBZ1_2.bin"
+		even
+ObjPos_S1SBZ1pf3:incbin	"level/objects/platforms/SBZ1_3.bin"
+		even
+ObjPos_S1SBZ1pf4:incbin	"level/objects/platforms/SBZ1_4.bin"
+		even
+ObjPos_S1SBZ1pf5:incbin	"level/objects/platforms/SBZ1_5.bin"
+		even
+ObjPos_S1SBZ1pf6:incbin	"level/objects/platforms/SBZ1_6.bin"
+		even
 ObjPos_S1Ending:incbin	"level/objects/S1E.bin"
 		even
 ObjPos_Null:	incbin	"level/objects/NULL.bin"
@@ -37631,144 +37540,62 @@ Nem_GHZ_Bridge:	incbin "art/nemesis/GHZ Bridge.bin"
 		even
 S1Nem_GHZRollingBall:incbin "art/nemesis/GHZ Ball.bin"
 		even
-S1Nem_GHZRollingSpikesLog:dc.b $80,$2C,$80,  3,	 2,$15,$16,$26,$32,$37,$77,$46,$38,$55,$1A,$65,$14,$73,	 3,$81,	 4,  8,$17,$76,$28,$F8,$47,$7B,$75,$15,$82,  5,$17,$17,$79,$27,$7A,$76,$3A,$83,	 2,  0,$16,$39,$28,$FA,$76,$37,$84,  5,$18,$85,	 5,$13,$86,  6,$36,$87,	 5,$12,$17,$78,$76,$33;	0
-		dc.b $FF,$A4,$A9,$3D,$62,$91,$42,$7C,$4D,$C7,$13,$1E,$88,$B7,$D4,$FB,$FE,$9E,$2F,$5F,$42,$11,$F0,$84,$2F,$A6,$C4,$21,$16,$10,$84,$57,$3E,$AA,$F1,$48,$A7,$34,$93,$63,$D4,$48,$74,$96,$BB,$63,$F6,$76,$85,$FA,$7A,$FC,  8,$5F,$B3,$42,$1B,$42,$10,$8B,  8,$42,$2B,$9F; 64
-		dc.b $55,$6D,$B6,$E9,$2A,$4F,$5B,$4F,$58,$D4,$D4,$7F, $E,$53,$3F,$4E,$B6,$50,$BB,$2F,$13,$32,$F2,$A1,$47,$2B,$13,$D4,$E0,$E3,$9C,$BE,$BB,$52,$3F,$2D,$2F,$79,$FE,$9F,$AA,$B6,$DB,$63,$73,$74,$89,$B8,$FD,$9A,$94,$61,$7E,$9E,$D2,$CB,$B6,$51,$B4,$B8,$96,$47,$7D,$AF; 128
-		dc.b $AF,$3C,$79,$92,$3F,$65,$2C,$BD,$4A,$DD,$B2,$FE,$3F,$55,$6D,$EF,$FC,$7D,$B1,$EE,$F2,$FC,$A8,$B9,$C4,$D4,$D0,$A2,$6A,$7C,$76,$70,$84,$47,$D6,$C8,$5C,$A8,$97,$EC,$6F,$97,$F1,$F6,$B7,$F4,$A7,$7A,$B6,$F7,$C4,$D7,$F1,$ED,$35,$FB,$1B,$17,$84,$65,$CF,$6E,$66,$8E; 192
-		dc.b $36,$BF,$C6,$5E,$32,$94,$16,$92,$95,$A2,$D2,$9F,$79,$29,$AB,$AF,$13,$BE,$5E,$AA,$DB,$DF,$3A,$88,$47,$71,$73,$E4,$C8,$BA,$82,$C5,$E3,$51,$DF,$98,$E6,$E8,$ED,$2D,$BB,$F8,$57,$8C,$BD,$29,$E5,$FD,$13,$58,$71,$4C,$32,$93,$6D,$B6,$F7,$CE,$A2,$10,$85,$78,$B8,$84; 256
-		dc.b $65,$73,$28,$52,$50,$71,$25,$B1,$C4,$AF,$B1,$DE,$F6,$8A,$4B,$2B,$DB,$CA,$92,$F7,$61,$E8,$D4,$53, $D,$B6,$DD,$37,$CE,$A2,$10,$8B,  8,$42,$1B,$10,$84,$58,$42,$11,$5F,$E3,$C5,$E3,$D4,$B6,$2D,$F1,$86,$E0,$D6,$1C,$23,$8C,$32,$91,$4C,$32,$93,$7B,$E7,$52,$C2,$10; 320
-		dc.b $B9,$42,$1B,$42,$10,$8B,  8,$42,$3F,$4D,$EF,$F2,$DF,$D7,$50,$BC,$7A,$B7,$8C,$7C,$36,$A4,$87,$DE,$10,$DE,$87,$AC,$3A,$6F,$9D,$5E,$ED,$BD,$EB,$9F,$5E,$F1,$F9,$5E, $A,$6D,$14,$29,$B3,$8A,$4D,$B6,$DE,$F9,$D5,$EE,$DB,$DE,$B9,$F5,$75,$7F,$76,$97,$1E,$71,$A9,$6A; 384
-		dc.b $F8,$7A,$1B,$6D,$D3,$7C,$EA,$21,  8,$B0,$84,$21,$B1,  8,$45,$84,$21,$15,$CF,$AA,$B6,$F7,$CE,$A5,$84,$21,$72,$84,$36,$84,$21,$16,$10,$84,$57,$3E,$AA,$DB,$6E,$92,$A4,$F5,$B4,$DF,$1B,$76,$7F,$C3,$9E,$27,$9D,$44,$23,$B8,$85,$F4,$DB,$DE,$B9,$F5,$56,$DB,$63,$A4; 448
-		dc.b $87,$49,$14,$BF,$1E,$2F,$FC,$3C,$EA,$21,  8,$B0,$84,$21,$B7,$BD,$73,$EA,$AC,  0; 512
-S1Nem_GHZLogSpikes:dc.b	$80,$12,$80,  4,  7,$14, $C,$25,$16,$35,$1B,$44, $A,$55,$1A,$65,$1C,$74,  2,$81,  3,  2,$15,$1D,$27,$78,$82,  5,$17,$16,$3D,$83,  3,  0,$17,$79,$27,$7C,$84,  4,  8,$18,$FA,$85,  4,  3,$86,  4,  9,$87,  4,  6,$18,$FB,$FF,$B3,$46,$8D,$54,$3F,$9D,$AC,$6D,$83; 0
-		dc.b $A3,$D8,$B2,$A3,$16,$4C,  8,$2A,$6D,$76,$7C, $C,$37,$FD,$17,$8C,$FE,$8E,$7F,$54,$89,$B8,$7A,$93,$D4,$68,$DD,$6C,$31,$8B,  9,$75,$BF,$B3,$1B,$BB,$A7,$56,$83,$D1,$A1,$5E,$75, $B,$91,$F9,$66,$AF,$84,  8,$8C,$B8,$8C,$95,$32,$81,$4D,$91,$4A,$5A,$9B, $E,$A6,$FA; 64
-		dc.b $F6,$BD,$6C,$FD,$93,$39,$BF,$E8,$87,$D6,$7C,$22,$22,$C3,$6B,$EE,$5B,$F2,$B6,$98,$37,$3B,$23,$73,$AE,$92,$DA,$F9,$36,$90,$E9,$B7,$24,$65,  0,$88,$88,$9A,$47, $E,$34,$2F,  7,$BF,$3D,$37,$37,$15,$37,$F1,$6F,$BB,$32,$B3,$3B,$53,$1E,$43,$B3,$9B,$DC,$64, $F,  4; 128
-		dc.b $44,$45,$FA,$5D,$9F,$A2,$C7,$77,$43, $E,$EB,$4B,$4B,$CD,$DC,$63,$4E,$85,$D6,$94,$12,$1A,$82,$5C,$82,$1C,$32,$93,$9A,$BA,$BC,$F2,$E7,$64,$EC,$E8,$E9,$9E,$4E,$9A,$F3,$57,$27,$1B,$1D,$B3,$10,$2D, $D,$2E,$41,$11,$7E,$93,$E6,$2B,$AF,$CB,$33,$98,$B2,$78,$D7,$D9; 192
-		dc.b $21,$A8,$DB,$38,$74,$E2,$A3,$13,$8B, $E,$2E,$46, $A,$1C,$38,$2B,$1F,$D0,$43,  6,$DB,$25,$3F,$B1,$61,$8D,$B9,$7B,$C5,$2E,$5F,$87,$A9,$36,  5,$69,$EB,$B0,$E5,$F2,$5A,$7E,$91,$60; 256
+S1Nem_GHZRollingSpikesLog: incbin "art/nemesis/GHZ Log.bin"
+		even
+S1Nem_GHZLogSpikes: incbin "art/nemesis/GHZ Spikes.bin"
+		even
 Nem_GHZ_Rock:	incbin "art/nemesis/GHZ Rock.bin"
 		even
 S1Nem_GHZBreakableWall:incbin "art/nemesis/GHZ Breakable Wall.bin"
 		even
 S1Nem_GHZWall:  incbin "art/nemesis/GHZ Edge Wall.bin"
 		even
-Nem_EHZ_Fireball:dc.b $80,$10,$80,  3,	2,$13,	3,$24,	8,$35,$1A,$46,$39,$56,$38,$65,$1B,$75,$19,$81,	3,  0,$16,$3C,$28,$F9,$83,  5,$18,$84,	4, $B,$16,$3D,$87,  4,	9,$18,$F8,$8C,	4, $A,$18,$FA,$8D,  3,	1,$15,$1D,$28,$FB,$FF,$CF,  6, $E,$60,$1D,$84,$46,$87,	2,  2,$A4,$59; 0
-					; DATA XREF: ROM:0001C156o
-					; ROM:0001C21Eo
-		dc.b $82,$8B,$19,$E6,$95,$31,$C0,$46, $F,$21,$96, $B,$22,  7,$58,$58,$62,$84,$E8,$21,$18,$47,$67,$83,$16,$C2, $B,$19,$58,$D8,$D4,$C0,$E3,$E6,$2F,$89,$8F,$48,$53,$78,$F8,$61,$4A,$F1,$77,$E7,$B1,$F7,$9C,$9D,$8D,$D4,$1C,$EA,$95,$14,$76,$51,$1A,$3A,$C1,$81,$C8,$D6; 64
-		dc.b $15,$30,$58,$52,$60,$40,$E6,$58,$54,$1D,$EB,$1B,$FC,$9F,$B2,$E6,$25,$9B,$C2,$B5,$6C,$6A,$D0,$41,$5C,$B1,$9E,$67,$2F,$C5,$72,$87,  1,$DB,$B4,$11,$9F,$D2,$68,$7E,$9C,$6B,$E4,$88,$FB,$5F,$63,$92,$2B,$93,$91,$5B,$AE, $E,$60,$E6, $C, $E, $A,$2C,$B3,  6, $D,$70; 128
-		dc.b $20,$14,$7E,$8A,$A6,$7F,$58,$AB,$63,$55,$28,$40,$5F,$8B,$FA,$28,$BF,$D6,$16,$42,$FC,$5A, $C,$A9,$B5,$86,$33,$F8,$67,$3C,$CA,$BE,$70,$BC,$EE,$44,$DA,$F3,$BB,$28,$4F,$B8,$65, $F,$80,$8A,$EF,$85,$18,$EF,  7,$60,$E7,$81,$A3,  6,  3,$3F,$8F,$DE,$23,$1B,$B6,$75; 192
-		dc.b $28,$F9,$15,$1D,$8E,$F3,$D6,$59, $C,$18,$FA,$46,  2,$AE,$D1,$8A,$46,$91,$10,$69, $F,$C1,$18,$10,$10,$31,$6A,$71,$40,$AB,$F8,$54,$E4,$5B,$AE,$65,$D2,$FC,$2B,$B5,$34,$C3,$B9,  8,$6F,$DE,$4F,$C7,$B3,$1E,$7C,$20,$57,$7E,$4B,  0; 256
-Nem_BurningLog:	dc.b $80,$18,$80,  4,  9,$15,$1C,$24,  8,$35,$16,$44, $C,$55,$17,$64,  6,$72,  0,$81,  4, $A,$82,  8,$FA,$83,  5,$1D,$84,  6,$3D,$87,  6,$3C,$88,  3,  2,$89,  4,  7,$8A,  5,$1A,$8C,  7,$7C,$8F,  5,$1B,$FF,  0,$BA,$6D,$AB,$D5,$FC,$A6,$DA,$CA,$84,$DB,$8A,$DF,$3C; 0
-		dc.b $8F,$23,$CB,$6F,$53,$BF,$21,$71,$59,$66,$A6,$8C,$EE,$A7,$BC,$DC,$7C,$B3,$DE,$A3,$DB,$7C,$5D,  9,$51,$EC,$A2,$C8,$64,$CE,$52,$67,$FD,  8,  0,  0,  4,$26,$DB,$6F,$CB,$29,$46,$7D,$73,$64,$6B,$AD,$F3,$95,$1D,$97,$C4,$73,$F3,$36,$F5,  2,$19,$33,$E2,$AC,$A7,  0; 64
-		dc.b $15,$BC,$E6,$DB,$C6,$56,$DF,$14,$7E,$62,$11,$C5,$64,$17,$F0,$BA,$DF,$35,$65,$67,$9A,$9D,$4F,$4D,$2B,$3F,$C8,$78,$F7,$B1,$AE,$FC,$6F,$73,$AB,$88,$84,$32,$67,$29,$33,$FE,$86,$51,$74,$DB,$15,$FC,$B2,$6D,$B6,$EF,$F9,$82,$E8,$19,$11,$A8,$A2,$FF,$99,$2C,$F2,$E5; 128
-		dc.b $DF,$3A,$AE,$A7,$E3,$7A,$E3,$21,$93,$3E,$2A,$CA,$71,$37,$D3,$68,  0,  0,  1,$42,$84,$29,$D7,$D3,$6A,$1E,$8E,$3C,$75,$F5,$DC,$79,$58,$BB,$67,$EC,$A9,$50,$8B,$A1,$93,$39,$4A,$E9,$FF,$43,$CF,$CC,$10,$B9,$56,$FA,$E3,$C3,$EA,$EE,  0,$12,$81,$BE,$9B,$48,$59,$A9; 192
-		dc.b $59,$D1, $E,$5D,$D9,$4B,$DD,$62,$38,$86,$4C,$F8,$AB,  0; 256
-Nem_EHZ_Waterfall:dc.b $80,$18,$80,  2,	 0,$24,	$A,$44,	$D,$65,$1D,$73,	 2,$81,	 3,  3,$82,  5,$1C,$85,	 7,$7C,$86,  8,$FA,$87,	 4, $B,$88,  8,$FB,$89,	 6,$3C,$8A,  3,	 4,$8B,	 6,$3D,$8C,  4,	$C,$FF,$3E,$8F,$A3,$F0,$87,$D5,$78,$70,$E1,$C3,$CD,$87,	$F,$9D,$B2, $D,$10,$95,$83,$A7;	0
-					; DATA XREF: ROM:0001C15Co
-		dc.b $AC,$C2,$CC,$AB,$21,$66,$6C,$2C,$9B,$35,$D3,$1D,$34,$61,$E0,$CF,$7B,$C3,$E1,$C1,$9F,$67,  9,$B2,$B1, $C,$63,$2D,$19,$58,$88,$5D,$5D,$44,$61,$15,$32,$C6,$35,$50,$F0,$F0,$F4,$FB,$AF, $E,$1C,$38,$79,$B0,$E1,$F3,$B6,$41,$A2,$12,$B0,$74,$F5,$98,$59,$95,$64,$2C; 64
-		dc.b $CD,$85,$93,$66,$BA,$63,$A6,$8C,$3C,$19,$EF,$78,$7C,$38,$33,$EC,$E1,$36,$56,$21,$8C,$65,$A3,$2B,$11, $B,$AB,$A8,$8C,$22,$A6,$58,$C6,$AA,$1E,$98,$7A,$44,$42,$D2,$A8,$AA,$6B,$D7,$B1,$25,$AD,$2A,$C5,$AD,$25,$DC,$45,$A4,$8C,$4B,$B6,$91,$85,$AA,$85,$D5,$A5,$53; 128
-		dc.b $5A,$43,$AB,$49,$6C,$49,$75,$91,$24,$8C,$4B,$5D,$66,$DA,$49,$56,$54,$2D,$56,$24,$42,$CB,$2D,$10,$B4,$AA,$2A,$9A,$F5,$EC,$49,$6B,$4A,$B1,$6B,$49,$77,$11,$69,$23,$12,$ED,$A4,$61,$6A,$A1,$75,$69,$54,$D6,$90,$EA,$D2,$5B,$12,$5D,$64,$49,$23,$12,$D7,$59,$B6,$92; 192
-		dc.b $55,$95, $B,$55,$89,  0; 256
-Nem_HTZ_Fireball:dc.b	0,$10,$80,  3,	3,$15,$17,$25,$19,$35,$1B,$47,$7B,$58,$FB,$68,$FA,$74, $A,$86,	6,$39,$8A,  6,$3A,$8B,	5,$18,$8C,  3,	2,$15,$16,$27,$7A,$8D,	2,  0,$16,$38,$28,$F8,$8E,  4,	9,$16,$3B,$28,$F9,$8F,	4,  8,$15,$1A,$26,$3C,$FF,$F6,$23,$22,$C6,$AE,$28,$EE; 0
-					; DATA XREF: ROM:0001C224o
-		dc.b $18,$A7,$F4,$D8,$64,$4F,$3D,$C0,$A2,$79,$EE,  5,$FD,$F1,$62,$30,$BF,$37,$F1,  8,$B3,$2D,$82,$CC,$5C,$3E,$2E,$2C,$95,$F4,$55,$71,$F7,$63,$DC,$61,$1B,$8F,$5B,$58,$5F,$17,$C2,$E1,$F0,$E2,$DC,$65,$42,$37,$88,$B1,$93,$D1,$95,$F0,$B2,$87,$C2,$BF,$17,$47,$D1,$ED; 64
-		dc.b $55,$71,$EC,$F4,$5C,$5A,$98,$62,$8E,$F9,$86,$62,$27,$99,$81,$47,$EF,$A0,$5F,$DF,$14,$7E,$6F,$58,$2D,$16,$84,$D7,$C5,$B0,$C4,$F8,$B5,$C4,$31,$64,$BA,$3E,$8A,$AA,$47,$DC,$58,$DE,$17,$1B,$C4,  8,$CC,$60,$6B,$38,$B1,$B8,$B1,$B5,$84,$6D,$16,$32,$8B,$19,$1D,$8C; 128
-		dc.b $8C,$5B,$43,$16,$4A,$AA,$AA,$AA,$DE,$22,$72,$B5,$3D,$5D,$6A,$7A,$E5,$DA,$3E,$7A,$76,$D7,$C8,$ED,$8F,$18,$FD,$3C,$26,$34,$D5,$D3,$10,$C4,$D3,$19,$74,$D3,$4D,$55,$55,$54,$C6,$3D,$F5,$3A,$59,$E7,$A9,$D2,$BF,$5F,$31,$67,$F3,$AB,$3F,$31,$66,$61,$FA,$65,$D3,$4C; 192
-		dc.b $68,$62,$1A,$B8,$C6,$9D,$9A,$69,$AA,$AA,$DE,$B7,$37,$9A,$BC,$66,$72,$A3,$32,$E6,$EB,$53,$79,$6B,$C9,$72,$35, $A,$3B,$63,$85,$E0,$FF,$79,$17,$19,$67,$66,$31,$97,$4D,$31,$95,$55,$9D,$7D,$CD,$E5,$C7,$D2,$CC,$EE,$5C,$E6,$26,$F3,$A4,$E5,$CF,$89,$F7, $A,$13,$3C; 256
-		dc.b $50,$CB,$C7,$EF,$18,$9D,$86,$5C,$63,$1A,$18,$D3,$4C,  0; 320
-Nem_EHZ_Bridge:	dc.b   0,  8,$80,  5,$1B,$15,$1A,$25,$1C,$38,$FA,$48,$FB,$83,  3,  2,$84,  2,  0,$16,$3C,$85,  3,  3,$14, $B,$86,  3,  4,$14, $A,$87,  4, $C,$16,$3D,$8C,  7,$7C,$8F,  5,$1D,$FF,$DA,$2E,$B1,$17,$5E,$A2,$EB,$D5,$E5,$D6,$6F,$F6,$7E,$3F,$A4,$39,$C4,$3A,$E2,$1C,$CE; 0
-					; DATA XREF: ROM:0001C162o
-					; ROM:0001C230o
-		dc.b $21,$CC,$E7,$E4,$DD,$7D,$21,$CD,$2B,$AC,$D2,$2E,$B4,$8B,$EC,$D2,$1F,$CE,$CD,$2E,$BF,$9D,$99,$56,$2D,$FB,$56,$2F,$6A,$C5,$95,$7E,$27,$E7,$EC,$F7,$18,$BE,$A9,$8B,$99,$18,$B9,$91,$8B,$94,$FF,$27,$C8,$C5,$F5,$95,$6B,$55,$62,$D4,$ED,$8B,$53,$BF,$18,$B5,$3B,$F1; 64
-		dc.b $F5,$7F,$83,$F4,$7C,$5E,$5E,$90,$E0,$F6,$BC,$65,$6C,$78,$38,$22,$3C,$1C,$4E,$9E,$11,$3A,$29,$A3,$F4,$A5,$A7,$E9,$90,$47,$E9,$88,$6C,$65,$5E,$D1,  8,$4D,$21,$C2,$71,  8,$7F,$7F,$D3,$FB,$62,$17,$21,$18,$B5,  8,$41,$6E,$E8,$66,$C8,$7E,$98,$44,$C3,$D6,$AC,$FD; 128
-		dc.b $28,$9D,$14,$D4,$31,$D3,$51,$98,$E0,$88,$CC,$66,$E8,$7E,$2D,$B2,$31,$6A,$FC,$5C,$FD,$1F,$D8,  0; 192
+Nem_EHZ_Fireball: incbin "art/nemesis/EHZ Fireball.bin"
+		even
+Nem_BurningLog:	incbin "art/nemesis/Burning log.bin"
+		even
+Nem_EHZ_Waterfall: incbin "art/nemesis/EHZ Waterfall.bin"
+		even
+Nem_HTZ_Fireball: incbin "art/nemesis/HTZ Fireball.bin"
+		even
+Nem_EHZ_Bridge:	incbin "art/nemesis/EHZ Bridge.bin"
+		even
 Nem_HTZ_Lift:	incbin "art/nemesis/HTZ Telefrcs.bin"
 		even
-Nem_HTZ_AutomaticDoor:incbin "art/nemesis/HTZ AutoDoor.bin"
+Nem_HTZ_AutomaticDoor: incbin "art/nemesis/HTZ AutoDoor.bin"
 		even
-Nem_HTZ_Seesaw:	dc.b $80,$18,$80,  4,  6,$15,$19,$26,$3A,$34,  8,$45,$17,$55,$1A,$66,$3B,$74,  2,$81,  3,  0,$14, $A,$26,$38,$36,$39,$48,$F9,$78,$FA,$82,  4,  5,$78,$FB,$83,  5,$1B,$15,$16,$84,  4,  7,$15,$13,$77,$7B,$85,  4,  4,$86,  5,$18,$87,  4,  3,$16,$3C,$8A,  5,$12,$8B; 0
-					; DATA XREF: ROM:0001C168o
-					; ROM:0001C236o
-		dc.b   7,$7A,$8F,  8,$F8,$FF,$22,$22,$67,$4C,$5C,$6C,$43,$B0,$D6,$F4,$3A,$FD,$BE,$7F,$A2,$4D,$FE,$3F,$7F,$67,$FE,$67,$FF, $B,$7F,$90,$88,$88,$88,$BF,$EF,$F4,$5F,$F3,$F7,$F7,$FF,$6F,$AF,$64,$44,$44,$45,$FF,$7F,$A2,$FF,$9F,$BF,$BF,$FB,$7D,$7B,$2E,$DF,$4E,$34,$16; 64
-		dc.b $EF,$B1,$73,$B4,$6D,$9C,$5C,$D5,$20,$C1,$A5,$F8,$89,$D6,$A6,$44,$59,$FC,$B5,$F0,$2E,$95,$B8,$DB,$6C,$47,$17,$AD,$AB,$C7,$1B,$C6,$6C,$DC,$1E,$1C,$59,$B8,$54,$71,$66,  6,$8A,$8E,$2D,$46,$8A,$8F,$F2,$68,$A9,$3E,$4D,$33,$3E,$62,$74,$78,$89,$D1,$E2,$FC,$1E,$33; 128
-		dc.b $66,$E0,$F0,$E2,$CD,$C2,$A3,$8B,$30,$34,$54,$71,$6A,$34,$54,$7F,$93,$45,$49,$F2,$69,$99,$F3,$13,$AD,$4C,$88,$88,$88,$8F,$1A,$A3,$C5,$F8,$3C,$66,$CD,$C1,$E1,$C5,$9B,$85,$47,$16,$60,$68,$A8,$E2,$D4,$68,$A8,$FF,$26,$8A,$93,$E4,$D3,$33,$E6,$27,$47,$88,$9D,$1E; 192
-		dc.b $2F,$C1,$E3,$36,$6E, $F, $E,$2C,$DC,$2A,$38,$B3,  3,$45,$47,$16,$A3,$45,$47,$F9,$34,$54,$9F,$26,$99,$9F,$31,$3A,$D4,$C8,$88,$8A,$FE,$43,$E1,$83,$1E,$1E,$BA,$A5,$DB, $D,$E4,$30,$C8,$6B,$35,$6F,$2E,$2C,$C1,$D9,$51,$C6,$FA,$34,$54,$9E,$68,$D4,$75,$47,$B8,$9E; 256
-		dc.b $C8,$B5,$F9,$AF,$CC,$7E,$6B,$A5,$FC,$FA,$C7,$C5,$7C,$11,$11,$11,$11,$11,$14,$7C,$67,$E2,$F5,$12,$FC,$47,$8A,$3D,$75,$2F,$42,$24,$2F,$21,$A1,$A9,$5F,$C1,  6,$CB,$A5,  5,$A5,$A8,$36,$59,$5F,$C6,$1D,$C8,$77,$21,$DC,$BD, $C,$FE,$6E,$59,$97,$E6,$F2,$3D,$4B,$B1; 320
-		dc.b $2E,$C4,$BB, $D,$E5,$E4,$AC,$71,$4A,$5A, $B,$A5,$63,$81,$E5,$E5,$A1,$A1,$2B,$89,$40,$F5,$2E,$80; 384
+Nem_HTZ_Seesaw:	incbin "art/nemesis/HTZ Seesaw.bin"
+		even
 Nem_HPZ_Bridge:	incbin "art/nemesis/HPZ Bridge.bin"
 		even
-Nem_HPZ_Waterfall:incbin "art/nemesis/HPZ Waterfall.bin"
+Nem_HPZ_Waterfall: incbin "art/nemesis/HPZ Waterfall.bin"
 		even
-Nem_HPZ_Emerald:incbin "art/nemesis/HPZ Emerald.bin"
+Nem_HPZ_Emerald: incbin "art/nemesis/HPZ Emerald.bin"
 		even
-Nem_HPZ_Platform:incbin "art/nemesis/HPZ Platform.bin"
+Nem_HPZ_Platform: incbin "art/nemesis/HPZ Platform.bin"
 		even
-Nem_HPZ_PulsingBall:incbin "art/nemesis/HPZ Pulsing Orbs.bin"
+Nem_HPZ_PulsingBall: incbin "art/nemesis/HPZ Pulsing Orbs.bin"
 		even
-Nem_HPZ_Various:dc.b $80,$16,$80,  3,  1,$14,  8,$26,$38,$36,$3A,$45,$1B,$56,$3D,$66,$3B,$74,  9,$81,  3,  0,$14, $A,$82,  4, $B,$18,$F8,$83,  3,  2,$15,$1A,$84,  6,$3C,$85,  5,$18,$86,  5,$19,$18,$F9,$87,  3,  3,$16,$39,$38,$FA,$FF,$FC,$7F,$E2,$FF,$7F,$F8,$CF,$C7,$FF,$55,$E2; 0
-					; DATA XREF: ROM:0001C1C6o
-		dc.b $66,$66,$7F,$A7,$85,$81,$FB,$5B,$C7,$D2,$E5,$4C,$CC,$CF,$FD,$7F,$65,$9F,$8C,$A3,$A9,$99,$99,$EB, $F,$F2,$BF,$59,$7F,$3F,$4B,$95,$F5,$33,$33,$3F,$F5,$C5,$8C,$56,  6,$1F,$F5,$66,$66,$65,$63,$FA,$77,$8B,$4F,$F1,$DA,$FD,$2E,$8A,$F3,$B7,$33,$33,$FA,$3F,$3F,$14; 64
-		dc.b $7F,$15,$F8,$EF,$DE,$7E,$DB,$8D,$7E,$88,$42,$22,$78,$10,$88,$9E,  4,$22,$27,$81, $A,$76,$21,$4E,$C4,$C8,$93,$6B,$F4,$54,$B9,$F9,$17,$80,$68,$BC,$F4, $D,$38,  6,$99,$A3,$4C,$88,$A6,$44,$53,$22,$11,$64,$11,$1E,$30,$6B,$8C,$66,$8A,$E3,$10,$B7,$63,$BF,$8E,$EE; 128
-		dc.b $48,$C7,$F5,$9F,$FC,$72,$87,$40,$8B,$11,$50,$2C,$D4,$32,$10,$E9,$90,$8A,$2C,$B2,$15,$8E,$4B,$35,$1C,$96,$3C,$20,$F3,$96,$A0,$43,$5D,$3C,$AE,$BE,$56,$F2,$BD,$5B,$FC,$AF,$E9,$B9,$C1,$FD, $D,$A3,$50,$8E,$84,$23,$A1,  8,$E8,$16,$8E,$81,$71,$A0,$5C,$68,$17,  0; 192
-		dc.b $82,$CB,$8F,  3,$3C,$C2,$79,$E4,$88,$4E,  7,$4B,$2F,$D5,$F3,$EA,$CF,$6A,$3F,$A7,  3,$FC,$C0,$DF,$EC,$6C,$BB,$51,$A8,$76,$75,  0,$B0,$BA,  5,$82,  8,$20,$B1,$6A,$88,$2D,$45,$10,$FC,$28,$D6,$71,$C2,$8C,$6C,$5E,$FE,$3D,$BD,$8E,$C7,$7F,$A2,$D6,$C1,$50,$24,$82; 256
-		dc.b $A0,$49,  5,$40,$9E,$14,  9,$E1,$40,$9F,$44,$FA,$27,$D5,$FE,$21,$FE,$60,$6F,$F6,$36,$5D,$A8,$D4,$3B,$3A,$80,$58,$5D,  2,$C1,  4,$10,$58,$B5,$44,$16,$A2,$88,$7E,$14,$6B,$38,$E1,$46,$36,$2F,$7F,$1E,$DE,$C7,$7F,$1F,$A3,$85,$CF,$C8,$BC,  3,$45,$E7,$A0,$69,$C0; 320
-		dc.b $34,$CD,$1A,$64,$45,$32,$22,$99,$10,$8B,$20,$88,$F1,$83,$5C,$63,$34,$57,$18,$85,$BB,$1D,$FC,$77,$72,$40; 384
-Nem_UnusedDust:	dc.b   0,$18,$80,  5,$17,$14,  8,$25,$1B,$35,$19,$45,$1C,$56,$3A,$67,$7A,$72,  0,$83,  4,  6,$14, $A,$28,$F9,$38,$FA,$84,  3,  2,$14,  9,$25,$18,$37,$7B,$58,$F8,$85,  4,  7,$15,$16,$26,$3C,$35,$1A,$46,$3B,$58,$FB,$FF,$CF,$CE,$EB, $D,$7A,$9F,$29,$77,$4B,$B6,$9D; 0
-		dc.b $26,$5F,$77,$69,$D5,$26,$C3,$DE,$A7,$CA,$5A,$57,$69,$7C,$57,$C5,$7C,$5F,$F8,$73,$1F,$D3,$3F,$A7, $A,$BD,$B3,$CE,$A7,$C5,$A5,$FE,$5C,$7F,$D7,$FE,$B6,$5F,$E5,$4E,$B5,$8D,$7F,$D1,$3A,$79,$AC,$7F,$CE,$EC,  7,$A5,$EA,$7A,$B4,$E7,$C9,$BA,$BB,$E3,$3E,$7F,$11,$D3; 64
-		dc.b $E2,$25,$D6,$6C,$DC,$4C,$B8,$C0,  6,$EB,$2D,$8A,$85,$69,$6B,$AD,$4D,$D6,$93,$DD,$69,$3D,$D9,$77, $D,$36,$5B,$6F,$79,$FA,  0,  3,$33,$FC,$3F,$86,$F7,$DC,$FD,$AE,$D3,$AE,$D7,$DC,$F9,$86,$F8,$6B,$B6,$2B,$7F,$40,  4,$37,$A5,$F3,$9B,$2A,$DE,$93,$47,$78,$7F,$7F; 128
-		dc.b $33,$F5, $C,$9B,$94,  0,  0,$43,$AE,$6B,$6B,$B8,$5D,$C3,$2B,$26,$DC,$D6,$69,  2,$F4,$E0,  3,$F5,$68,$78,$56,$BA,$75,$76,$4F,  9,$A1,$90,$10,$9D,$42,$8B,$28,$50,$C9,$80, $D,$DB,$AF,$39,$65,$94,$F5, $A,$28,$2F,$2C,$9E,$EF,$D2,$B7,$2C,$9B,$32,  0,$1E,$AC,$B9; 192
-		dc.b $65,$CC,$43,$F5,$60,$37,$6E,$A4,$2E,$80, $B,$74,$9F,$2E,$43,$C3,$81,$D2,$7D,$BE,$D1,$74,  0,  6,$6D,$D4,$C2,$38,$83,$A4,  0,$70; 256
-Nem_CPZ_FloatingPlatform:dc.b	0,$10,$80,$73,	0,$81,	4,  5,$15,$12,$26,$2E,$36,$3A,$46,$3B,$74,  6,$82,  5,$14,$26,$34,$36,$33,$83,	4,  2,$16,$39,$25, $F,$35,$10,$84,  4,	3,$15,$16,$26,$32,$37,$78,$46,$35,$85,	4,  4,$15,$13,$86,  5, $E,$28,$FA,$87,	6,$36,$88,  5,$11,$16,$3D,$89; 0
-					; DATA XREF: ROM:0001C12Eo
-		dc.b $27,$79,$8A,$15,$18,$28,$FB,$8B,  7,$7C,$16,$2F,$8C,  5,$15,$8D,  6,$37,$8E,  6,$38,$FF,$7E,$BA,$15,$1F,$9C,$34,$2A,$3E,$F9,$5F,$2F,$92,$BF,$BB,$EE,$F8,$B7,$DD,$7E,$70,$D0,$A8,$FC,$E1,$A1,$53,$93,$CD,$F9,$95,$1F,$9C,$34,$2A,$3D,$BF,$21,$2C,$FF,$61,$D7,$F4; 64
-		dc.b $24,  0,  0,  0,  0,$19,$7F,$16,  6,$56,$79,$96,$50,$32,$B2,$DF,$D7,$E2,$AF,$EB,$1F,$3A,$FB,$EB,$F7,$50,$32,$B3,$CC,$B2,$81,$95,$9E,$65,$64,$81,$91,$C0,$CB,$28,$19,$59,$E6,$59,$37,$37,$68,$CC,$DF,$C0,$F3,$FE, $F,$C4,$80,  0,  0, $F,$DA,$FE,$DB,$C2,$1C,$F5; 128
-		dc.b $43,$4F,  8,$73,$FB,$EF,$1D,$E3,$BC,$77,$F7,$E1, $E,$7A,$A1,$A6,$55,$B9,$35,$43,$4C,$AB,$72,$6A,$86,$9E,$10,$E7,$AA,$1A,$31,$5A,$6C,$CD,$77,$F2,$63,$BC,$7C,$C6,$BC,$7B,$F8, $F,$DC,$FE,$A3,$F6,$1E,$78,$FF,  7,$E2,$40,  0, $F,$A9,$D9,$66,$E9,$1C,$A6,$EA,$A9; 192
-		dc.b $CA,$6E,$AB,$90,$97, $E,$54,$FD,$7E,$1C,$A7,$76,$1D,$53,$FD,$7E,$1D,$52,$6B,$B9,$5F,$D2,$AF,$2A,$85,$42,$49,$21,$3A,$8E,$24,$54,$FC,$B5,$3F,$2C,$8A,$7F,$C6,$32,$52,$FA,$25,$E5,$5E,$D2,$2B,$4F,$E9,$99,$A3,$C4,$77,$8E,$D1,$DA,$BF,$C8,$D9,$DB,$FB,$BF,$BB,$3B; 256
-		dc.b $88,$D6,$3C,$7B,$B7,$9F,$D4,$6F,$1F,$D0,$7F,$24,  0,  0; 320
-Nem_HPZ_WaterSurface:dc.b   0,$18,$80,	3,  4,$16,$38,$26,$3C,$37,$7A,$73,  5,$86,  5,$1A,$16,$3A,$87,	4, $C,$16,$3B,$88,  2,	1,$16,$39,$27,$7B,$38,$F8,$89,	2,  0,$15,$1B,$FF,$B6,$DB,$FE, $D,$79,$FF,$6F,$D3,$76,$EB,$F6,$FE,$F1,$EF,$9D,$A6,  9,$C8,$88,$EE,$10,$83,  8,$42,$6E,$10; 0
-					; DATA XREF: ROM:0001C1D2o
-		dc.b $B6,$D9,$D7,$AF,$DB,$4F,$EB,$67,$ED,$B3,$F8,$DD,$F5,$CF,$7A,$E7,$3F,$B1,$8E,$72,$23,$8E,$D1,$13,$92,  9,$37,  4,$4E,  8,$42,$1E,$88,$5B,$67,$7F,$D0,$C7,$3F,$81,$9E,$F3,$C7,$3E,$3B,$18,$CF,$70,$4F,$81,$13,$E0,$44,$77,  4,$83,  4,$49,$B8,$42,$1C,$1E,$10,$E0; 64
-		dc.b $F0,$B6,$DB,$6C,$73,$AF,$5F,$C8,$D6,$68,$FE,$47,$48,$8F,$68,$CF,$67,$22,$41,$DC,$21, $E,  8,$42,$1C,$10,$87,$A2,$DB,$6D,$BE,$75,$9A,$CD,$67,$59,$D3,$FB,$7F,$E4,$7E,$9C,$44,$F8,$11,$1D,$A4,$11,$84,$20,$EE,$10,$87,$A2,$DB,$6D,$FF,$B7,$5D,$EB,$35,$FB,$77,$F8; 128
-		dc.b $EF,$7F,$C8,$13,$91,$13,$91,$11,$DA,$24,$38,$12, $E,$E1,  8,$70,$5B,$6D,$FE,$86,$BF,$4F,$EB,$FE,$EE,$73,$8F,$62,$38,$E7,$22,$23,$B4,$44,$88,$88,$EE,$10,$48,$89,  9,$BE,$1E, $B,$6D,$B6,$CC,$FF,  7,$ED,$F5,$9A,$C3,$E3,$4E,$93, $E,$73,$46,$18,$23,  4,$83,$BF; 192
-		dc.b   8,$70,$41,$21,$E8,$85,$B6,$DB,$6C,$CF,$DB,$77,$D6,$3F,$A7,$F7,$A7,$39,$CD,$A2,$43,$21,$86,$13,$70,$F0,$E0,$84,$38,$3F,$80,$52,$DB,$6D,$99,$D6,$71,$D7,$E9,$F5,$9D,$38,$F7,$F0,$7B,$26,$D1,$11,$84,$21,$C1,  8,$43,$D1, $E, $F,$E0,$16,$DB,$6D,$9A,$CF,$E8,$7F; 256
-		dc.b $1D,$CF,$66,$39,$EC,$4C,$73,$68,$88,$C2,  9,$37,  4,$87,$F4,  8,$7A,$2D,$B6,$DB,$E6,$6B,$FA,$1C,$E6,$9D,$38,$67,$3A,$CE,$91,$C7,$1D,  9,$86, $C,$21,$83,$B8,$42,$1C,$1E,$10,$E0,$84,$2C,  0,  0; 320
+Nem_HPZ_Various: incbin "art/nemesis/HPZ Various.bin"
+		even
+Nem_UnusedDust:	incbin 	"art/nemesis/Dust.bin"
+		even
+Nem_CPZ_FloatingPlatform: incbin 	"art/nemesis/CPZ Platform.bin"
+		even
+Nem_HPZ_WaterSurface: incbin 	"art/nemesis/HPZ Water surface.bin"
+		even
 Nem_Button:	incbin "art/nemesis/Button.bin"
 		even
-Nem_VSpring2:	dc.b   0,$14,$80,  4,  7,$25,$1A,$46,$3A,$66,$3C,$73,  0,$81,  4,  5,$14,  6,$66,$3D,$76,$30,$86,  5,$19,$15,$16,$36,$38,$87,  5,$13,$15,$14,$88,  5,$12,$16,$31,$25,$17,$89,  3,  1,$14,  8,$78,$FB,$8C,  5,$15,$17,$7C,$28,$FA,$36,$39,$56,$3B,$8D,  4,  4,$16,$36; 0
-					; DATA XREF: ROM:0001C142o
-					; ROM:0001C17Ao ...
-		dc.b $26,$37,$FF,  0,  0,  0,$BD,$33,$3C,$B2,$2E,$F5,$54,$5D,$EA,$8C,$8B,$BD,$55,$17,$7A,$A3,$22,$EF,$55,$45,$DE,$A9,$80,  0,  0,  7,$FD,$92,$A9,$DA,$76,$95,$4E,$D3,$B4,$AA,$76,$9D,$E0,  0,  0,  1,$FF,$6E,$78,$E7,$8E,$78,$E7,$8E,$78,$E7,$8C,  0,  0,  0,$3F,$4D; 64
-		dc.b $3C,$D2,$5F,$12,$BB,$37,$D6,$CA,$8B,$F1,$2B,$B3,$7D,$6C,$A8,$BF,$12,$BB,$37,$D6,$CA,$98,$2B,$FD,$DE,$96,$7F,$7E,$CD,$E9,$67,$F4,$DE,$96,$C0,  0,  0,  3,$FD,$2F,$6A,$5C,$FA,$FF,$76,$A5,$CF,$AF,$6A,$5C,$E0,  0,  0,  1,$E1,$EA,$33,$A8,$B4,$DE,$27,$9A,$29,$94; 128
-		dc.b $F1,$67,$38,$B4,$7E,$41,$BF,$53,$23,$A6,$89,$74,$C7,$C5,  0,  1,$E1,$EA,$33,$A8,$9E,$66,$F1,$FA,$79,$29,$9C,$A7,$26,$73,$8F,$F0,$5F,$D3,$7A,$5B,  0,  0,  0,  3,$3C,$4B,$3D,$24,$DA,$9B,$74,$A0,$78,$7C,$94,$74,$71,$8D,$2C,$4A,$34,$DF,$B9,$FD,$83,$19,$1F,$D8; 192
-		dc.b $44,$8E,$A3,$12,$F1,$49,$2B,$9B,$62,$BF,$90,$CC,$E4,$DA,$9B,$74,$A3,$C6,$FE,$87,$AF,$6A,$5C,$E0,  0,  0,  0,  0; 256
-Nem_HSpring2:	dc.b $80, $C,$80,  3,  2,$14, $A,$26,$38,$37,$7A,$46,$39,$55,$19,$68,$FA,$73,  3,$81,  2,  0,$15,$1B,$26,$3B,$57,$7B,$68,$FB,$86,  6,$3C,$88,  5,$1A,$89,  3,  4,$8C,  5,$18,$57,$7C,$8E,  6,$3A,$8F,  4, $B,$FF,$FB,$D2,$C2,$C2,$C2,$B5,$F2,$B0,$B0,$B0,$8A,$10,$B6; 0
-					; DATA XREF: ROM:0001C148o
-					; ROM:0001C180o ...
-		dc.b $BE,$E8,$42,$1D,$7F,$69,$B7,$5F,$DA,$6D,$B6,$DB,$E0,$42,$2B,$DD,$7B,$AF,$75,$F6,$84,$21,$1F,$45,$61,$61,$62,$BE,$5A,$F9,$58,$58,$58,$E3,$47,$E6, $F,$CC,$2E,$D6,$E3,$6A,$D5,$D5,$BA,$11,$43,$6E,$84,$50,$EA,$D5,$D5,$B7,$5D,$AD,$CC,$CA,$EF,$A9,$9B,$CC,$BE,$A5; 64
-		dc.b $5D,$5F,$D4,$5D,$44,$71,$67,$24,$2D,$F2,$78,$21,$1C,$5E,$48,$AD,$F2,$35,$BE,$48,$DB,$6F,$91,$CE,$4D,$3B,$9C,$1A,$1F,$E7,$A2,$35,$BE,$25, $A,$58,$B5,$50,$8B,$6A,$57,$EC,$66,$67,$AE,$E6,$6F,$D1,$A9,$7D,$4C,$9C,$69,$6A,$17,$28,$CE,$E1,$E1,$73,$22,$25,$1E,$2E; 128
-		dc.b $B3,$F9,$F9,$E8,$8C,$C9,$A7,$F4,  0,  0; 192
-Nem_DSpikes:	dc.b   0,$20,$80,  5,$1A,$16,$37,$25,$19,$35,$17,$45,$15,$55,$14,$65,$18,$73,  0,$81,  3,  1,$15,$16,$86,  4,  7,$87,  4,  8,$17,$7A,$27,$7B,$88,  5,$12,$16,$3B,$28,$F9,$89,  3,  2,$16,$38,$26,$39,$8A,  6,$3A,$16,$36,$8C,  5,$13,$17,$78,$27,$79,$38,$FA,$8D,  4; 0
-					; DATA XREF: ROM:0001C13Co
-					; ROM:0001C174o ...
-		dc.b   6,$FF,$18,$34,$B5,$6C,$D5,$2C,$68,$5B,  4,  0,  0,  0,$59,$A5,$72,$C5,$A3,$2C,$7F,$5B,$1B,$9F,$E6,$BE,$BF,$9B,$36,$7F,$DE,$CD,$A7,$FB,$D9,$B4,$DA,$65,$A6,$D3,$6F,$1A,$2D,$36,$F3,$B9,$6F,$AC,$96,$F3,$72,$DE,$2A,$5A,$74,$2D,$82,  0,  0,$3E,$26,$F4,$F0,$F5; 64
-		dc.b $F2,$F7,$FA,$7C,$F9,$FD,$36,$FE,$3F,$8D,$A9,$FF,$1A,$7F,$D6,$F2,$DF,$A6,$FA,$2C,$FF,$CC,  0,  0,  0,  0,  0,$F8,$9B,$D3,$C3,$D0,$B7,$F3,$37,$2D,$F5,$92,$DE,$6E,$5A,$6D,$52,$D3,$A1,$6C,$10,  0,  0,  1,$E1,$9E,$F3,$69,$B3,$E5,$A6,$D3,$68,$DE,$6D,$3F,$D6,$C6; 128
-		dc.b $9A,$7F,$CD,$94,$FF,$9A,$7F,$BA,$5A,$DF,$AD,$2D,$6D,$16,$2D,$6C,$96,$B5,$6C,  0,  0,$68,$D3,$83,$73,$DA,$CA,$B4,$4B,$75,$DD,$A3,$50,$54,$3F,$E8,$54,$15, $E,$74,$54,$15, $F,$B9,$4E,$53,$E4,$A7,$2A,$E5,$39,$A9,$4F,$42,$B0,$40,  0,$E1,$1A,$49,$1A,$BC,$91,$B9; 192
-		dc.b $79,$23,$9B,$3C,$91,$DD,$ED,$12,$47,$50,$F6,$89,$22,$A1,$ED,$25,$A2,$A2,$56,$DE, $A,$92,$CA,$82,$AE,$54,$50,$80,  0,  0,  0,  6,$39,$BA,$8E,$F9,$D1,$50,$BD,$AD,$15,$1C,$CB,$72,$9F,$F4,$39,$29,$E8,$53,$D0,$A7,$A1,$58,$20,  0,  0,  0,  1,$5E,$6F,$C7,$77,$32; 256
-		dc.b $46,$E7,$8A,$95, $A,$A6,$4A,$A5,$45, $C,$A8,$56, $E,  8,$E6,$BE,$FF,$93,$FA,$19,$3F,$A9,$67,$F8,$20,$46,$14,$50,$A8,$A1,  0,  0,  0,  2,$8B,$1F,$96,$E2,$E7,$D3,$F1,$9B,$7B,$57,$B7,$6A,$B6,$E3, $B,$10,$A9,$25,$45, $A,$A6,$4A,$A7,$89,$5F,$F7,$37,$ED,$54,$A0; 320
-		dc.b   0,  0,  0,  0,  0,$6F,$C5,$78,$AF,$3D,$67,$9F,$D5,$6B,$9D,$A5,$B7,$1B,$7C,$F4,$B6,$FE,$42,$EB,$F7,$1E,$97,$EE,$3D,$AE,$BB,$FD,$BA,$DA,$4F, $F, $B,$F5,$52,$78,$75,$B4,$BA,$93,$C2,$EB,$E7,$AE,$F8,$E9,$74,$B6,$FF,$C8,  0, $E,$B1,$B5,$25,$B5,$62,$5B,$5F,$D4; 384
-		dc.b $B6,$CB,$C7,$7B,$69,$47,$CE,$DC,$7C,$ED,$CF,$7B,$73,$AF,$D5,$73,$BF,$F2,$72,  0; 448
-Nem_HUD:	dc.b $80,$18,$80,  4,  6,$14, $A,$24, $C,$34, $B,$48,$FB,$55,$1D,$65,$1C,$72,  0,$81,  3,  2,$18,$F9,$25,$1B,$36,$3D,$8C,  4,  7,$16,$3C,$38,$FA,$8D,  3,  4,$15,$1A,$38,$F8,$FF,$2B,$E9,$53,$DC,$59,$AE,$C6,$D2,$67,$A8,$C8,$C7,$A8,$9B,$C4,$FD,$8F,$6F,$73,$3E,$3E; 0
-					; DATA XREF: ROM:0001C0A4o
-		dc.b $6B,$D0, $F,$BF,$A5,$4F,$71,$66,$B8,$8D,$33,$B4,$4D,$BB,$F1,$19,$1E,$DE,$E2,$AF,$85,$9E,$80,$7D,$FD,$2A,$7B,$8B,$35,$C4,$63,$B4,$4E,$D1,  5,$47,$B7,$B8,$AB,$E1,$67,$A0,$17,$FC,$C5,$C8,$B3,$5C,$5D,$8E,$D1,$3D,$C5,$9A,$68,$AD,  5,$EA,$B5,$5B,$6D,$80,$57,$F3; 64
-		dc.b $17,$22,$CD,$71,$76,$3B,$46,$7B,$9F,$35,$1D,$A2,  1,$B5,$5A,$AD,$B6,$C0,$33,$C5,$4E,  0,$CE,$D1,$33,$80,$56,$B3,$4D,$BA,$F9,  0,$75,$9E,$21,$A0,$E3,$DC,$C7,$68,$9A,$71,$4E,$29,$C4,$6A,$96,$6C,  3,$3E,$95,$3D,$C5,$9A,$E2,$34,$CE,$DA,$78,$C8,$C7,$EC,$7B,$7B; 128
-		dc.b $8A,$BE,$16,$7A,  1,$7F,$DC,$43,$79,$5A,$E7,$C9,$4E,$D1,  0,$5E,$BB,$B0, $B,$F1,$57,$80, $E,$D1,$33,$B4,  0,$D6,$69,$B7,$5B,  0,$57,$E2,$26,$3D,$BB,$3F,$5C,$95,$14,$68,$AD,$45,$D4,$15,$AE,$EC,  2,$BF,$B8,$8C,$F8,$FB,$F7,$27,$89,$9E,$E2,$CF,$D6,$F7,$77,$3F; 192
-		dc.b $58,$86,$FE,$ED,$7F,$84,  6,  0; 256
-Nem_Lives:	dc.b $80, $C,$80,  3,  0,$13,  2,$25,$12,$36,$3B,$46,$36,$55,$1A,$66,$3C,$74,  6,$81,  3,  1,$15,$16,$26,$3D,$82,  5,$17,$83,  5,$15,$84,  5,$18,$85,  8,$F8,$86,  4,  7,$87,  5,$13,$16,$33,$88,  6,$37,$8B,  6,$38,$8C,  5,$14,$16,$3A,$28,$FA,$8D,  4,  8,$16,$32; 0
-					; DATA XREF: ROM:0001C0AAo
-		dc.b $28,$FB,$8E,  8,$F9,$8F,  6,$39,$FF,$FF,$8F,$FD,$C6,$3F,$6B,$7A,$8C,$58,$6F,$CB,$AC,  2, $E,$F2,$C4,$B9,$5F,$92,$3B,$FE,$26,$62,$F9,$CB,$81,$3B,$27,$E6,$E5,$17,$57,$FD,$20,$9F,$75,$F8,$15,$F9,$81,$57,$32,$21,$CA,$AF,$E2,$9D,$7E,$51,$54,$4E,$F9,$FE,$8E,$8D; 64
-		dc.b $FF,$7A,$F8,$FF,$95,$A8,$C2,$CC,$3F,$C4,$88,$CC,$15,$14,$53,$E3,  3,$F3,$E7,$67,$F9,$B8,$F8,$E6,$56,$9A,$9A,$21,$F7,$97,$1C,$8C,$6F,$F3,$55,$D7,$1F,$8A,$BA,$B0,$2F, $B,$F2,$D3,$7E,$25,$FB,$CF,$DB,$FF,$C5,$7E,$F0,$AA, $F,$B1,$41,$41,$95,$A5,$90,$A1,$95,$B6; 128
-		dc.b $FA,$10,$68,$3F,$7A,$65,$FB,$16,$60,$E7,$4F,$3F,$1F,$C7,$D3,$CF,$53,$3A,$23,$E8,$AE,$84,  8,$2C,$CD,$DC,  8,$32,$FB,$2B,$2F,$65,$66,$4E,$7B,$2F,$33,$DE,$67,$6C,$CE,$C5,$E6,$75,$3F,$2D,$D9,$1D,$11,$D4,$35,$35, $D,$1E,$16,$C9,$64,$47,$A2,$CC,$CC,$CC,$CC,$C5; 192
-		dc.b $7D,$19,$50,$40,$83,$B6,$5A,$F7,$6E,$8A,$A0,$81,  6,$5F,$64,$15,$EB,$33,$33,$33,$20,  0; 256
+Nem_VSpring2:	incbin 	"art/nemesis/Vertical spring 2.bin"
+		even
+Nem_HSpring2:	incbin 	"art/nemesis/Horizontal spring 2.bin"
+		even
+Nem_DSpikes:	incbin 	"art/nemesis/Downward spikes.bin"
+		even
+Nem_HUD:	incbin	"art/nemesis/HUD.bin"
+		even
+Nem_Lives:	incbin	"art/nemesis/Lives.bin"
+		even
 Nem_Ring:	incbin	"art/nemesis/Ring.bin"
 		even
 Nem_Monitors:	incbin	"art/nemesis/Monitors.bin"
@@ -37789,53 +37616,53 @@ Nem_Bat:	incbin	"art/nemesis/HPZ Batbot.bin"
 		even
 Nem_Octopus:	incbin 	"art/nemesis/HPZ Octus.bin"
 		even
-Nem_Triceratops:incbin	"art/nemesis/HPZ Rhinobot.bin"
+Nem_Triceratops: incbin	"art/nemesis/HPZ Rhinobot.bin"
 		even
 Nem_Dinobot:	incbin	"art/nemesis/HPZ Dinobot.bin"
 		even
-Nem_HPZ_Piranha:incbin	"art/nemesis/HPZ BFish.bin"
+Nem_HPZ_Piranha: incbin	"art/nemesis/HPZ BFish.bin"
 		even
 Nem_Seahorses:	incbin	"art/nemesis/HPZ Aquis.bin"
 		even
-Nem_UnusedRollingBall:incbin 	"art/nemesis/Rolling ball.bin"
+Nem_UnusedRollingBall: incbin 	"art/nemesis/Rolling ball.bin"
 		even
-Nem_UnusedMotherBubbler:incbin 	"art/nemesis/Bubblers Mother.bin"
+Nem_UnusedMotherBubbler: incbin 	"art/nemesis/Bubblers Mother.bin"
 		even
-Nem_UnusedBubbler:incbin 	"art/nemesis/Bubbler.bin"
+Nem_UnusedBubbler: incbin 	"art/nemesis/Bubbler.bin"
 		even
 Nem_Snail:	incbin	"art/nemesis/EHZ Snail.bin"
 		even
-Nem_EHZ_Piranha:incbin	"art/nemesis/EHZ Chopper.bin"
+Nem_EHZ_Piranha: incbin	"art/nemesis/EHZ Chopper.bin"
 		even
 Nem_BossShip:	incbin	"art/nemesis/EHZ Boss - Eggman.bin"
 		even
-Nem_CPZ_ProtoBoss:incbin	"art/nemesis/CPZ Boss.bin"
+Nem_CPZ_ProtoBoss: incbin	"art/nemesis/CPZ Boss.bin"
 		even
-Nem_BigExplosion:incbin "art/nemesis/Big explosion.bin"
+Nem_BigExplosion: incbin "art/nemesis/Big explosion.bin"
 		even
-Nem_BossShipBoost:incbin "art/nemesis/EHZ Boss Boosters.bin"
+Nem_BossShipBoost: incbin "art/nemesis/EHZ Boss Boosters.bin"
 		even
 Nem_Smoke:	incbin	"art/nemesis/Smoke.bin"
 		even
 Nem_EHZ_Boss:	incbin	"art/nemesis/EHZ Boss.bin"
 		even
-Nem_EHZ_Boss_Blades:incbin	"art/nemesis/EHZ Boss Blades.bin"
+Nem_EHZ_Boss_Blades: incbin	"art/nemesis/EHZ Boss Blades.bin"
 		even
 S1Nem_Ballhog:	incbin	"art/nemesis/Sonic 1 - Ballhog.bin"
 		even
 Nem_Crabmeat:	incbin	"art/nemesis/Sonic 1 - Crabmeat.bin"
 		even
-Nem_GHZBuzzbomber:incbin	"art/nemesis/Sonic 1 - Buzzbomber.bin"
+Nem_GHZBuzzbomber: incbin	"art/nemesis/Sonic 1 - Buzzbomber.bin"
 		even
-Nem_UnknownGroundExplosion:incbin "art/nemesis/Ground explosion.bin"
+Nem_UnknownGroundExplosion: incbin "art/nemesis/Ground explosion.bin"
 		even
-S1Nem_LZBurrobot:incbin	"art/nemesis/Sonic 1 - Burrobot.bin"
+S1Nem_LZBurrobot: incbin	"art/nemesis/Sonic 1 - Burrobot.bin"
 		even
-Nem_GHZ_Piranha:incbin 	"art/nemesis/GHZ Piranha.bin"
+Nem_GHZ_Piranha: incbin 	"art/nemesis/GHZ Piranha.bin"
 		even
 Nem_S1LZJaws:	incbin	"art/nemesis/Sonic 1 - Jaws.bin"
 		even
-Nem_S1SYZRoller:incbin	"art/nemesis/Sonic 1 - Roller.bin"
+Nem_S1SYZRoller: incbin	"art/nemesis/Sonic 1 - Roller.bin"
 		even
 Nem_Motobug:	incbin	"art/nemesis/EHZ Motobug.bin"
 		even
@@ -37851,9 +37678,9 @@ S1Nem_Bomb:     incbin	"art/nemesis/Sonic 1 - Bomb.bin"
 		even
 S1Nem_Orbinaut:	incbin	"art/nemesis/Sonic 1 - Orbinaut.bin"
 		even
-S1Nem_Caterkiller:incbin	"art/nemesis/Sonic 1 - Caterkiller.bin"
+S1Nem_Caterkiller: incbin	"art/nemesis/Sonic 1 - Caterkiller.bin"
 		even
-Nem_S1TitleCard:incbin	"art/nemesis/Title Cards.bin"
+Nem_S1TitleCard: incbin	"art/nemesis/Title Cards.bin"
 		even
 Nem_Explosion:	incbin 	"art/nemesis/Explosion.bin"
 		even
@@ -37865,9 +37692,9 @@ Nem_HSpring:	incbin 	"art/nemesis/Horizontal spring.bin"
 		even
 Nem_BigFlash:	incbin	"art/nemesis/Giant Ring Flash.bin"
 		even
-Nem_S1BonusPoints:incbin	"art/nemesis/Sonic 1 - Bonus Points.bin"
+Nem_S1BonusPoints: incbin	"art/nemesis/Sonic 1 - Bonus Points.bin"
 		even
-S1Nem_SonicContinue:incbin 	"art/nemesis/Sonic 1 - Continue screen.bin"
+S1Nem_SonicContinue: incbin 	"art/nemesis/Sonic 1 - Continue screen.bin"
 		even
 S1Nem_MiniSonic:incbin 	"art/nemesis/Sonic 1 - Continue icon.bin"
 		even
@@ -37893,7 +37720,7 @@ Map16_HTZ:	incbin	"mappings/16x16/HTZ_supp.bin"
 		even
 Nem_HTZ:	incbin	"art/nemesis/HTZ_supp.bin"
 		even
-Nem_HTZ_AniPlaceholders:incbin "art/nemesis/HTZ Animated Tile placeholders.bin"
+Nem_HTZ_AniPlaceholders: incbin "art/nemesis/HTZ Animated Tile placeholders.bin"
 		even
 Map128_EHZ:	incbin	"mappings/128x128/EHZ_HTZ.bin"
 		even
@@ -37907,7 +37734,7 @@ Map16_CPZ:      incbin	"mappings/16x16/CPZ.bin"
 		even
 Nem_CPZ:        incbin	"art/nemesis/CPZ.bin"
 		even
-Nem_CPZ_Unknown:incbin 	"art/nemesis/CPZ Unknown.bin"
+Nem_CPZ_Unknown: incbin 	"art/nemesis/CPZ Unknown.bin"
 		even
 Map128_CPZ:     incbin	"mappings/128x128/CPZ.bin"
 		even
@@ -37917,7 +37744,7 @@ Nem_GHZ:	incbin	"art/nemesis/GHZ.bin"
 ; Sonic 1 Leftover - GHZ's secondary art is not used because the secondary and primary art already exist in the one set of tiles.
 Nem_GHZ2:       incbin	"art/nemesis/GHZ2.bin"
 		even
-Chameleon_Map128_GHZ:incbin	"mappings/128x128/GHZ.bin"
+Chameleon_Map128_GHZ: incbin	"mappings/128x128/GHZ.bin"
 				even
 ;
 ; yet another leftover chunk
@@ -37926,8 +37753,11 @@ Chameleon_Map128_GHZ:incbin	"mappings/128x128/GHZ.bin"
 Leftover_E0178: incbin	"leftovers/E0178.bin"
 		even
 S1Nem_EndingGraphics:	incbin "art/nemesis/Sonic 1 Ending graphics (leftover).bin"
+		even
 S1Nem_CreditsFont:	incbin "art/nemesis/Sonic 1 - Credits.bin"
+		even
 S1Nem_EndingSONICText:	incbin "art/nemesis/Sonic 1 Ending - StH Logo (leftover).bin"
+		even
 ; ---------------------------------------------------------------------------
 ; Leftovers from Toe Jam & Earl REV00, likely a result of EPROM reusage
 ; ---------------------------------------------------------------------------
