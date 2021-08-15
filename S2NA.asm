@@ -14843,7 +14843,7 @@ loc_B3FA:				; DATA XREF: ROM:0000B38Co
 		bra.w	DisplaySprite
 ; ===========================================================================
 ;----------------------------------------------------
-; Object 0F - ???
+; Object 0F - Mappings test
 ;----------------------------------------------------
 
 Obj0F:					; DATA XREF: ROM:Obj_Indexo
@@ -14861,24 +14861,24 @@ Obj0F_Index:	dc.w loc_B416-Obj0F_Index ; DATA XREF: ROM:Obj0F_Indexo
 
 loc_B416:				; DATA XREF: ROM:Obj0F_Indexo
 		addq.b	#2,$24(a0)
-		move.w	#$90,8(a0) ; 'ê'
-		move.w	#$90,$A(a0) ; 'ê'
+		move.w	#$90,8(a0)
+		move.w	#$90,$A(a0) 				; near the top left corner of the screen
 		move.l	#Map_Obj0F,4(a0)
 		move.w	#$680,2(a0)
 		bsr.w	ModifySpriteAttr_2P
 
 loc_B438:				; DATA XREF: ROM:0000B412o
 					; ROM:0000B414o
-		move.b	(Ctrl_1_Press).w,d0
-		btst	#5,d0
-		beq.s	loc_B44C
-		addq.b	#1,$1A(a0)
-		andi.b	#$F,$1A(a0)
+		move.b	(Ctrl_1_Press).w,d0			; load controller inputs
+		btst	#5,d0						; is A pressed?
+		beq.s	loc_B44C					; if not, branch
+		addq.b	#1,$1A(a0)					; advance mapping frame forward
+		andi.b	#$F,$1A(a0)					; wrap around to 0 if $F
 
 loc_B44C:				; CODE XREF: ROM:0000B440j
-		btst	#4,d0
-		beq.s	locret_B458
-		bchg	#0,(Two_player_mode+1).w
+		btst	#4,d0						; is B pressed?
+		beq.s	locret_B458					; if not, ignore
+		bchg	#0,(Two_player_mode+1).w	; turn on 2 player mode (hangs in a loop)
 
 locret_B458:				; CODE XREF: ROM:0000B450j
 		rts
@@ -14890,7 +14890,7 @@ byte_B51C:	dc.b   7,  0,  1,  2,  3,  4,  5,  6; 0	; DATA XREF: ROM:off_B51Ao
 		dc.b   7,$FE,  2,  0	; 8
 off_B528:	dc.w byte_B52A-off_B528	; DATA XREF: ROM:off_B528o
 byte_B52A:	dc.b $1F,  0,  1,$FF	; 0 ; DATA XREF: ROM:off_B528o
-Map_S1Obj0F:    incbin	"mappings/sprite/S1obj0F.bin"
+Map_S1Obj0F:    incbin	"mappings/sprite/S1obj0F.bin"	; (leftover)
 		even
 Map_Obj0E:	incbin	"mappings/sprite/obj0E.bin"
 		even
