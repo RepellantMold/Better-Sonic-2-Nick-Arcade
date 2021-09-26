@@ -1,11 +1,3 @@
-; Macro for declaring a "main level load block" (MLLB).
-levartptrs macro tiles,plc1,blocks,plc2,chunks,music,palette
-	dc.l tiles+(plc1<<24)
-	dc.l blocks+(plc2<<24)
-	dc.l chunks
-	dc.b 0, music, palette, palette
-    endm
-
 ; MainLoadBlocks:
 LevelArtPointers:
 	levartptrs Nem_GHZ, PLCID_GHZ, Map16_GHZ, PLCID_GHZ2, Chameleon_Map128_GHZ, $81, 4		; GHZ - GREEN HILL ZONE

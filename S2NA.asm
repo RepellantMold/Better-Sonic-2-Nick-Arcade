@@ -15863,8 +15863,7 @@ Map_S1Obj7E:	dc.w word_C406-Map_S1Obj7E ; DATA XREF:	ROM:0000BDDCo
 					; ROM:Map_S1Obj7Eo ...
 		dc.w word_C470-Map_S1Obj7E
 		dc.w word_C4A2-Map_S1Obj7E
-		dc.w $1C1E4-Map_S1Obj7E	; this points to part of Hidden Palace's PLC data for some strange reason
-					; (also intentionally made this address fixed since shifting it too much will give 'illegal value' errors)
+		dc.w $E003
 		dc.w word_C4DC-Map_S1Obj7E
 		dc.w word_C4FE-Map_S1Obj7E
 		dc.w word_C520-Map_S1Obj7E
@@ -36718,10 +36717,10 @@ LevelLayout_Index:
 		dc.w Level_EHZ2-LevelLayout_Index,Level_EHZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 39
 		dc.w Level_EHZ1-LevelLayout_Index,Level_EHZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 42
 		dc.w Level_EHZ2-LevelLayout_Index,Level_EHZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 45
-		dc.w Level_HPZ1-LevelLayout_Index,LeveL_HPZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 48
-		dc.w Level_HPZ1-LevelLayout_Index,LeveL_HPZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 51
-		dc.w Level_HPZ1-LevelLayout_Index,LeveL_HPZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 54
-		dc.w Level_HPZ1-LevelLayout_Index,LeveL_HPZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 57
+		dc.w Level_HPZ1-LevelLayout_Index,Level_HPZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 48
+		dc.w Level_HPZ1-LevelLayout_Index,Level_HPZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 51
+		dc.w Level_HPZ1-LevelLayout_Index,Level_HPZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 54
+		dc.w Level_HPZ1-LevelLayout_Index,Level_HPZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 57
 		dc.w Level_HTZ1-LevelLayout_Index,Level_HTZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 60
 		dc.w Level_HTZ2-LevelLayout_Index,Level_HTZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 63
 		dc.w Level_HTZ1-LevelLayout_Index,Level_HTZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 66
@@ -37233,7 +37232,7 @@ S1Nem_EndingSONICText:	incbin "art/nemesis/Sonic 1 Ending - StH Logo (leftover).
 Leftover_E166F:	incbin	"leftovers/E166F.bin"
 		even
 
-		dcb.b	$100000-*, 0
+		dcb.b	$100000-$, 0
 EndOfROM:
 ; end of 'ROM'
 

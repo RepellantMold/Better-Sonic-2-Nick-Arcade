@@ -16,3 +16,11 @@ stopZ80 macro
 startZ80 macro
 	move.w	#0,(Z80_Bus_Request).l
      endm
+
+; Macro for declaring a "main level load block" (MLLB).
+levartptrs macro
+	dc.l \1+(\2<<24)
+	dc.l \3+(\4<<24)
+	dc.l \5
+	dc.b 0, \6, \7, \7
+    endm
