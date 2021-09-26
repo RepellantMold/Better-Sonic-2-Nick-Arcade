@@ -37716,7 +37716,8 @@ Map128_CPZ:     incbin	"mappings/128x128/CPZ.bin"
 Map16_GHZ:      incbin	"mappings/16x16/GHZ.bin"
 		even
 Nem_GHZ:	incbin	"art/nemesis/GHZ.bin"
-; Sonic 1 Leftover - GHZ's secondary art is not used because the secondary and primary art already exist in the one set of tiles.
+; Sonic 1 Leftover - GHZ's secondary art is not used because the
+; secondary and primary art already exist in the one set of tiles.
 Nem_GHZ2:       incbin	"art/nemesis/GHZ2.bin"
 		even
 Chameleon_Map128_GHZ: incbin	"mappings/128x128/GHZ.bin"
@@ -37738,6 +37739,9 @@ S1Nem_EndingSONICText:	incbin "art/nemesis/Sonic 1 Ending - StH Logo (leftover).
 ; ---------------------------------------------------------------------------
 Leftover_E166F:	incbin	"leftovers/E166F.bin"
 		even
+
+		dcb.b	$100000-*, 0
+EndOfROM:
 ; end of 'ROM'
 
 
