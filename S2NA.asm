@@ -15863,7 +15863,8 @@ Map_S1Obj7E:	dc.w word_C406-Map_S1Obj7E ; DATA XREF:	ROM:0000BDDCo
 					; ROM:Map_S1Obj7Eo ...
 		dc.w word_C470-Map_S1Obj7E
 		dc.w word_C4A2-Map_S1Obj7E
-		dc.w $E003	; (had to do this)
+		dc.w $1C1E4-Map_S1Obj7E	; this points to part of Hidden Palace's PLC data for some strange reason
+					; (also intentionally made this address fixed since shifting it too much will give 'illegal value' errors)
 		dc.w word_C4DC-Map_S1Obj7E
 		dc.w word_C4FE-Map_S1Obj7E
 		dc.w word_C520-Map_S1Obj7E
@@ -36584,205 +36585,7 @@ Debug_ShowItem:				; CODE XREF: ROM:loc_1BB24p
 
 ; ===========================================================================
 ; Same format as Sonic 1
-DebugList:	dc.w Debug_GHZ-DebugList ; DATA	XREF: ROM:loc_1BB0Ao
-					; ROM:loc_1BB44o ...
-		dc.w Debug_CPZ-DebugList
-		dc.w Debug_CPZ-DebugList
-		dc.w Debug_EHZ-DebugList
-		dc.w Debug_HPZ-DebugList
-		dc.w Debug_HTZ-DebugList
-		dc.w Debug_HPZ-DebugList
-Debug_GHZ:	dc.w $E			; DATA XREF: ROM:DebugListo
-		dc.l Map_Obj25+$25000000
-		dc.b   0,  0,$26,$BC	; subtype, frame, VRAM setting (2 bytes)
-		dc.l Map_Obj26+$26000000
-		dc.b   0,  0,  6,$80	; 0
-		dc.l Map_Obj1F+$1F000000
-		dc.b   0,  0,  4,  0	; 0
-		dc.l Map_Obj22+$22000000
-		dc.b   0,  0,  4,$44	; 0
-		dc.l Map_Obj2B+$2B000000
-		dc.b   0,  0,  4,$70	; 0
-		dc.l Map_Obj36+$36000000
-		dc.b   0,  0,  4,$A0	; 0
-		dc.l Map_Obj18+$18000000
-		dc.b   0,  0,$40,  0	; 0
-		dc.l Map_Obj3B+$3B000000
-		dc.b   0,  0,$66,$C0	; 0
-		dc.l Map_Obj40+$40000000
-		dc.b   0,  0,  4,$E0	; 0
-		dc.l Map_Obj41_GHZ+$41000000
-		dc.b   0,  0,  4,$A8	; 0
-		dc.l Map_Obj32+$42000000
-		dc.b   0,  0,$24,$9B	; 0
-		dc.l Map_Obj44+$44000000
-		dc.b   0,  0,$43,$4C	; 0
-		dc.l Map_Obj79+$79000000
-		dc.b   1,  0,$26,$BC	; 0
-		dc.l Map_Obj03+$03000000
-		dc.b   0,  0,$26,$BC	; 0
-Debug_CPZ:	dc.w $10		; DATA XREF: ROM:0001BCEEo
-					; ROM:0001BCF0o
-		dc.l Map_Obj25+$25000000
-		dc.b   0,  0,$26,$BC	; 0
-		dc.l Map_Obj26+$26000000
-		dc.b   0,  0,  6,$80	; 0
-		dc.l Map_Obj41_GHZ+$41000000
-		dc.b   0,  0,  4,$A8	; 0
-		dc.l Map_Obj03+$03000000
-		dc.b   0,  0,  7,$BC	; 0
-		dc.l Map_Obj0B+$0B000000
-		dc.b   0,  0,$E0,  0	; 0
-		dc.l Map_Obj0C+$0C000000
-		dc.b   0,  0,$E4,$18	; 0
-		dc.l Map_Obj15_CPZ+$15000000
-		dc.b   8,  0,$24,$18	; 0
-		dc.l Map_Obj03+$03000000
-		dc.b   9,  1,$26,$BC	; 0
-		dc.l Map_Obj03+$03000000
-		dc.b  $D,  5,$26,$BC	; 0
-		dc.l Map_Obj19+$19000000
-		dc.b   1,  0,$64,  0	; 0
-		dc.l Map_Obj36+$36000000
-		dc.b   0,  0,$24,$34	; 0
-		dc.l Map_Obj41+$41000000
-		dc.b $81,  0,  4,$5C	; 0
-		dc.l Map_Obj41+$41000000
-		dc.b $90,  3,  4,$70	; 0
-		dc.l Map_Obj41+$41000000
-		dc.b $A0,  6,  4,$5C	; 0
-		dc.l Map_Obj41+$41000000
-		dc.b $30,  7,  4,$3C	; 0
-		dc.l Map_Obj41+$41000000
-		dc.b $40, $A,  4,$3C	; 0
-Debug_EHZ:	dc.w $13		; DATA XREF: ROM:0001BCF2o
-		dc.l Map_Obj25+$25000000
-		dc.b   0,  0,$26,$BC	; 0
-		dc.l Map_Obj26+$26000000
-		dc.b   0,  0,  6,$80	; 0
-		dc.l Map_Obj79+$79000000
-		dc.b   1,  0,  4,$7C	; 0
-		dc.l Map_Obj03+$03000000
-		dc.b   0,  0,$26,$BC	; 0
-		dc.l Map_Obj49+$49000000
-		dc.b   0,  0,$23,$AE	; 0
-		dc.l Map_Obj49+$49000000
-		dc.b   2,  3,$23,$AE	; 0
-		dc.l Map_Obj49+$49000000
-		dc.b   4,  5,$23,$AE	; 0
-		dc.l Map_Obj18_EHZ+$18000000
-		dc.b   1,  0,$40,  0	; 0
-		dc.l Map_Obj18_EHZ+$18000000
-		dc.b  $A,  1,$40,  0	; 0
-		dc.l Map_Obj36+$36000000
-		dc.b   0,  0,$24,$34	; 0
-		dc.l Map_Obj14+$14000000
-		dc.b   0,  0,  3,$CE	; 0
-		dc.l Map_Obj41+$41000000
-		dc.b $81,  0,  4,$5C	; 0
-		dc.l Map_Obj41+$41000000
-		dc.b $90,  3,  4,$70	; 0
-		dc.l Map_Obj41+$41000000
-		dc.b $A0,  6,  4,$5C	; 0
-		dc.l Map_Obj41+$41000000
-		dc.b $30,  7,  4,$3C	; 0
-		dc.l Map_Obj41+$41000000
-		dc.b $40, $A,  4,$3C	; 0
-		dc.l Map_Obj4B+$4B000000
-		dc.b   0,  0,  3,$E6	; 0
-		dc.l Map_Obj54+$54000000
-		dc.b   0,  0,  4,  2	; 0
-		dc.l Map_Obj53+$53000000
-		dc.b   0,  0,  4,$1C	; 0
-		dc.l Map_Obj4F+$4F000000
-		dc.b   0,  0,  5,  0	; 0
-		dc.l Map_Obj52+$52000000
-		dc.b   0,  0,$25,$30	; 0
-		dc.l Map_Obj50+$50000000
-		dc.b   0,  0,$25,$70	; 0
-		dc.l Map_Obj50+$51000000
-		dc.b   0,  0,$25,$70	; 0
-		dc.l Map_Obj4D+$4D000000
-		dc.b   0,  0,$23,$C4	; 0
-		dc.l Map_Obj4B+$4B000000
-		dc.b   0,  0,  3,$2C	; 0
-		dc.l Map_Obj4E+$4E000000
-		dc.b   0,  0,$23,  0	; 0
-		dc.l Map_Obj4C+$4C000000
-		dc.b   0,  0,$23,$50	; 0
-		dc.l Map_Obj4A+$4A000000
-		dc.b   0,  0,$23,$8A	; 0
-Debug_HTZ:	dc.w $13		; DATA XREF: ROM:0001BCF6o
-		dc.l Map_Obj25+$25000000
-		dc.b   0,  0,$26,$BC	; 0
-		dc.l Map_Obj26+$26000000
-		dc.b   0,  0,  6,$80	; 0
-		dc.l Map_Obj79+$79000000
-		dc.b   1,  0,  4,$7C	; 0
-		dc.l Map_Obj03+$03000000
-		dc.b   0,  0,$26,$BC	; 0
-		dc.l Map_Obj18_EHZ+$18000000
-		dc.b   1,  0,$40,  0	; 0
-		dc.l Map_Obj18_EHZ+$18000000
-		dc.b  $A,  1,$40,  0	; 0
-		dc.l Map_Obj36+$36000000
-		dc.b   0,  0,$24,$34	; 0
-		dc.l Map_Obj14+$14000000
-		dc.b   0,  0,  3,$CE	; 0
-		dc.l Map_Obj41+$41000000
-		dc.b $81,  0,  4,$5C	; 0
-		dc.l Map_Obj41+$41000000
-		dc.b $90,  3,  4,$70	; 0
-		dc.l Map_Obj41+$41000000
-		dc.b $A0,  6,  4,$5C	; 0
-		dc.l Map_Obj41+$41000000
-		dc.b $30,  7,  4,$3C	; 0
-		dc.l Map_Obj41+$41000000
-		dc.b $40, $A,  4,$3C	; 0
-		dc.l Map_Obj16+$16000000
-		dc.b   0,  0,$43,$E6	; 0
-		dc.l Map_Obj16+$1C000000
-		dc.b   4,  1,$43,$E6	; 0
-		dc.l Map_Obj16+$1C000000
-		dc.b   5,  2,$43,$E6	; 0
-		dc.l Map_Obj4B+$4B000000
-		dc.b   0,  0,  3,$E6	; 0
-		dc.l Map_Obj54+$54000000
-		dc.b   0,  0,  4,  2	; 0
-		dc.l Map_Obj53+$53000000
-		dc.b   0,  0,  4,$1C	; 0
-Debug_HPZ:	dc.w $F			; DATA XREF: ROM:0001BCF4o
-					; ROM:0001BCF8o
-		dc.l Map_Obj25+$25000000
-		dc.b   0,  0,$26,$BC	; 0
-		dc.l Map_Obj26+$26000000
-		dc.b   0,  0,  6,$80	; 0
-		dc.l Map_Obj1C_01+$1C000000
-		dc.b $21,  3,$E4,$85	; 0
-		dc.l Map_Obj13+$13000000
-		dc.b   4,  4,$E4,$15	; 0
-		dc.l Map_Obj1A_HPZ+$1A000000
-		dc.b   0,  0,$44,$75	; 0
-		dc.l Map_Obj03+$03000000
-		dc.b   0,  0,$26,$BC	; 0
-		dc.l Map_Obj4F+$4F000000
-		dc.b   0,  0,  5,  0	; 0
-		dc.l Map_Obj52+$52000000
-		dc.b   0,  0,$25,$30	; 0
-		dc.l Map_Obj50+$50000000
-		dc.b   0,  0,$25,$70	; 0
-		dc.l Map_Obj50+$51000000
-		dc.b   0,  0,$25,$70	; 0
-		dc.l Map_Obj4D+$4D000000
-		dc.b   0,  0,$23,$C4	; 0
-		dc.l Map_Obj4B+$4B000000
-		dc.b   0,  0,  3,$2C	; 0
-		dc.l Map_Obj4E+$4E000000
-		dc.b   0,  0,$23,  0	; 0
-		dc.l Map_Obj4C+$4C000000
-		dc.b   0,  0,$23,$50	; 0
-		dc.l Map_Obj4A+$4A000000
-		dc.b   0,  0,$23,$8A	; 0
+		include "_inc/Debug list.asm"
 ; ===========================================================================
 
 j_ModifySpriteAttr_2P_1:
@@ -36815,323 +36618,15 @@ j_ModifySpriteAttr_2P_1:
 ; and PLCs, with all other entries going unused).
 ; ---------------------------------------------------------------------------
 
-; Macro for declaring a "main level load block" (MLLB).
-levartptrs macro
-	dc.l \1+(\2<<24)
-	dc.l \3+(\4<<24)
-	dc.l \5
-	dc.b 0, \6, \7, \7
-    endm
-
-; MainLoadBlocks:
-LevelArtPointers:
-	levartptrs Nem_GHZ, PLCID_GHZ, Map16_GHZ, PLCID_GHZ2, Chameleon_Map128_GHZ, $81, 4		; GHZ - GREEN HILL ZONE
-	levartptrs Nem_CPZ, PLCID_LZ,  Map16_CPZ, PLCID_LZ2,  Map128_CPZ, $82, 5			; LZ - LABYRINTH ZONE (GARBAGE)
-	levartptrs Nem_CPZ, PLCID_CPZ, Map16_CPZ, PLCID_CPZ2, Map128_CPZ, $83, 6			; CPZ - CHEMICAL PLANT ZONE
-	levartptrs Nem_EHZ, PLCID_EHZ, Map16_EHZ, PLCID_EHZ2, Map128_EHZ, $84, 7			; EHZ - EMERALD HILL ZONE
-	levartptrs Nem_HPZ, PLCID_HPZ, Map16_HPZ, PLCID_HPZ2, Map128_HPZ, $85, 8			; HPZ - HIDDEN PALACE ZONE
-	levartptrs Nem_EHZ, PLCID_HTZ, Map16_EHZ, PLCID_HTZ2, Map128_EHZ, $86, 9			; HTZ - HILL TOP ZONE
-	levartptrs Nem_GHZ, 0,         Map16_GHZ, 0,          Chameleon_Map128_GHZ, $86, $13		; S1E - SONIC 1 ENDING (CRASHES)
-	even
+	include "_inc/Level art pointers.asm"
 ; ===========================================================================
 
-ArtLoadCues:
-PLCptr_Std1:		dc.w PLC_Main-ArtLoadCues
-PLCptr_Std2:		dc.w PLC_Main2-ArtLoadCues
-PLCptr_Explosion:	dc.w PLC_Explode-ArtLoadCues
-PLCptr_GameOver:	dc.w PLC_GameOver-ArtLoadCues
-PLCptr_GHZ:		dc.w PLC_GHZ-ArtLoadCues
-PLCptr_GHZ2:		dc.w PLC_GHZ2-ArtLoadCues
-PLCptr_LZ:		dc.w PLC_CPZ-ArtLoadCues
-PLCptr_LZ2:		dc.w PLC_CPZ2-ArtLoadCues
-PLCptr_CPZ:		dc.w PLC_CPZ-ArtLoadCues
-PLCptr_CPZ2:		dc.w PLC_CPZ2-ArtLoadCues
-PLCptr_EHZ:		dc.w PLC_EHZ-ArtLoadCues
-PLCptr_EHZ2:		dc.w PLC_EHZ2-ArtLoadCues
-PLCptr_HPZ:		dc.w PLC_HPZ-ArtLoadCues
-PLCptr_HPZ2:		dc.w PLC_HPZ2-ArtLoadCues
-PLCptr_HTZ:		dc.w PLC_HTZ-ArtLoadCues
-PLCptr_HTZ2:		dc.w PLC_HTZ2-ArtLoadCues
-PLCptr_S1TitleCard:	dc.w PLC_S1TitleCard-ArtLoadCues
-PLCptr_Boss:		dc.w PLC_Boss-ArtLoadCues
-PLCptr_Signpost:	dc.w PLC_Signpost-ArtLoadCues
-PLCptr_S1Warp:		dc.w PLC_Invalid-ArtLoadCues
-PLCptr_S1SpecialStage:	dc.w PLC_Invalid-ArtLoadCues
-PLCptr_GHZAnimals:	dc.w PLC_GHZAnimals-ArtLoadCues
-PLCptr_LZAnimals:	dc.w PLC_LZAnimals-ArtLoadCues
-PLCptr_CPZAnimals:	dc.w PLC_CPZAnimals-ArtLoadCues
-PLCptr_EHZAnimals:	dc.w PLC_EHZAnimals-ArtLoadCues
-PLCptr_HPZAnimals:	dc.w PLC_HPZAnimals-ArtLoadCues
-PLCptr_HTZAnimals:	dc.w PLC_HTZAnimals-ArtLoadCues
-PLCptr_S1SSResults:	dc.w LeftoverData_Unknown-ArtLoadCues
-PLCptr_S1Ending:	dc.w LeftoverData_Unknown+2-ArtLoadCues
-PLCptr_S1TryAgain:	dc.w LeftoverData_Unknown+4-ArtLoadCues
-PLCptr_S1EggmanSBZ2:	dc.w LeftoverData_Unknown+6-ArtLoadCues
-PLCptr_S1FZBoss:	dc.w LeftoverData_Unknown+8-ArtLoadCues
-; ===========================================================================
+	include "_inc/Pattern load cues.asm"
 
-PLC_Main:	dc.w (((PLC_Main2-PLC_Main-2)/6)-1)
-		dc.l Nem_Lamppost
-		dc.w $8F80
-		dc.l Nem_HUD
-		dc.w $D940
-		dc.l Nem_Lives
-		dc.w $FA80
-		dc.l Nem_Ring
-		dc.w $D780
-		dc.l Nem_Points
-		dc.w $9580
-; ===========================================================================
-
-PLC_Main2:	dc.w (((PLC_Explode-PLC_Main2-2)/6)-1)
-		dc.l Nem_Monitors
-		dc.w $D000
-		dc.l Nem_Shield
-		dc.w $97C0
-		dc.l Nem_Stars
-		dc.w $9BC0
-; ===========================================================================
-
-PLC_Explode:	dc.w (((PLC_GameOver-PLC_Explode-2)/6)-1)
-		dc.l Nem_Explosion
-		dc.w $B400
-; ===========================================================================
-
-PLC_GameOver:	dc.w (((PLC_GHZ-PLC_GameOver-2)/6)-1)
-		dc.l Nem_GameOver
-		dc.w $ABC0
-; ===========================================================================
-
-PLC_GHZ:	dc.w (((PLC_GHZ2-PLC_GHZ-2)/6)-1)
-		dc.l Nem_GHZ
-		dc.w 0
-		dc.l Nem_GHZ_Piranha
-		dc.w $8E00
-		dc.l Nem_VSpikes
-		dc.w $9400
-		dc.l Nem_VSpring
-		dc.w $9500
-		dc.l Nem_HSpring
-		dc.w $9700
-		dc.l Nem_GHZ_Bridge
-		dc.w $98C0
-		dc.l Nem_SwingPlatform
-		dc.w $9A00
-		dc.l Nem_Motobug
-		dc.w $9C00
-		dc.l Nem_GHZ_Rock
-		dc.w $D800
-PLC_GHZ2:	dc.w (((PLC_CPZ-PLC_GHZ2-2)/6)-1)
-		dc.l Nem_GHZ_Piranha
-		dc.w $8E00
-; ===========================================================================
-
-PLC_CPZ:	dc.w (((PLC_CPZ2-PLC_CPZ-2)/6)-1)
-		dc.l Nem_CPZ
-		dc.w 0
-		dc.l Nem_CPZ_Unknown
-		dc.w $7A00
-		dc.l Nem_CPZ_FloatingPlatform
-		dc.w $8000
-PLC_CPZ2:	dc.w (((PLC_EHZ-PLC_CPZ2-2)/6)-1)
-		dc.l Nem_VSpikes
-		dc.w $8680
-		dc.l Nem_DSpikes
-		dc.w $8780
-		dc.l Nem_VSpring2
-		dc.w $8B80
-		dc.l Nem_HSpring2
-		dc.w $8E00
-; ===========================================================================
-
-PLC_EHZ:	dc.w (((PLC_EHZ2-PLC_EHZ-2)/6)-1)
-		dc.l Nem_EHZ
-		dc.w 0
-		dc.l Nem_EHZ_Fireball
-		dc.w $73C0
-		dc.l Nem_EHZ_Waterfall
-		dc.w $75C0
-		dc.l Nem_EHZ_Bridge
-		dc.w $78C0
-		dc.l Nem_HTZ_Seesaw
-		dc.w $79C0
-		dc.l Nem_VSpikes
-		dc.w $8680
-		dc.l Nem_DSpikes
-		dc.w $8780
-		dc.l Nem_VSpring2
-		dc.w $8B80
-		dc.l Nem_HSpring2
-		dc.w $8E00
-PLC_EHZ2:	dc.w (((PLC_HPZ-PLC_EHZ2-2)/6)-1)
-		dc.l Nem_Shield
-		dc.w $AC00
-		dc.l Nem_Points
-		dc.w $9580
-		dc.l Nem_Buzzbomber
-		dc.w $7CC0
-		dc.l Nem_Snail
-		dc.w $8040
-		dc.l Nem_EHZ_Piranha
-		dc.w $8380
-; ===========================================================================
-
-PLC_HPZ:	dc.w (((PLC_HPZ2-PLC_HPZ-2)/6)-1)
-		dc.l Nem_HPZ
-		dc.w 0
-		dc.l Nem_HPZ_Bridge
-		dc.w $6000
-		dc.l Nem_HPZ_Waterfall
-		dc.w $62A0
-		dc.l Nem_HPZ_Platform
-		dc.w $6940
-		dc.l Nem_HPZ_PulsingBall
-		dc.w $6B40
-		dc.l Nem_HPZ_Various
-		dc.w $6F80
-		dc.l Nem_HPZ_Emerald
-		dc.w $7240
-		dc.l Nem_HPZ_WaterSurface
-		dc.w $8000
-PLC_HPZ2:	dc.w (((PLC_HTZ-PLC_HPZ2-2)/6)-1)-7 	; remove the '-7' if you wish to restore the rest of the list
-		dc.l Nem_Dinobot
-		dc.w $A000
-		dc.l Nem_Bat 	; At this point the rest of the PLC's are not read because it is cut off
-		dc.w $A600	
-		dc.l Nem_Crocobot
-		dc.w $6000
-		dc.l Nem_Buzzbomber
-		dc.w $6580
-		dc.l Nem_Bat
-		dc.w $6A00
-		dc.l Nem_Triceratops
-		dc.w $7880
-		dc.l Nem_Dinobot
-		dc.w $A000
-		dc.l Nem_HPZ_Piranha
-		dc.w $A600
-; ===========================================================================
-
-PLC_HTZ:	dc.w (((PLC_HTZ2-PLC_HTZ-2)/6)-1)
-		dc.l Nem_EHZ
-		dc.w 0
-		dc.l Nem_HTZ
-		dc.w $3F80
-		dc.l Nem_HTZ_AniPlaceholders
-		dc.w $A000
-		dc.l Nem_EHZ_Fireball
-		dc.w $73C0
-		dc.l Nem_HTZ_Fireball
-		dc.w $75C0
-		dc.l Nem_HTZ_AutomaticDoor
-		dc.w $77C0
-		dc.l Nem_EHZ_Bridge
-		dc.w $78C0
-		dc.l Nem_HTZ_Seesaw
-		dc.w $79C0
-		dc.l Nem_VSpikes
-		dc.w $8680
-		dc.l Nem_DSpikes
-		dc.w $8780
-		dc.l Nem_VSpring2
-		dc.w $8B80
-		dc.l Nem_HSpring2
-		dc.w $8E00
-PLC_HTZ2:	dc.w (((PLC_S1TitleCard-PLC_HTZ2-2)/6)-1)-3	; don't know why they cut off this list
-		dc.l Nem_HTZ_Lift
-		dc.w $7CC0
-		dc.l Nem_Buzzbomber
-		dc.w $7CC0
-		dc.l Nem_Snail
-		dc.w $8040
-		dc.l Nem_EHZ_Piranha
-		dc.w $8380
-; ===========================================================================
-
-PLC_S1TitleCard:dc.w (((PLC_Boss-PLC_S1TitleCard-2)/6)-1)
-		dc.l Nem_S1TitleCard
-		dc.w $B000
-; ===========================================================================
-
-PLC_Boss:	dc.w (((PLC_Signpost-PLC_Boss-2)/6)-1)-6
-		dc.l Nem_BossShip
-		dc.w $8C00
-		dc.l Nem_EHZ_Boss
-		dc.w $9800
-		dc.l Nem_EHZ_Boss_Blades
-		dc.w $A800
-		dc.l Nem_BossShip
-		dc.w $8000
-		dc.l Nem_CPZ_ProtoBoss
-		dc.w $8C00
-		dc.l Nem_BossShipBoost
-		dc.w $9A00
-		dc.l Nem_Smoke
-		dc.w $9B00
-		dc.l Nem_EHZ_Boss
-		dc.w $9D00
-		dc.l Nem_EHZ_Boss_Blades
-		dc.w $AD00
-; ===========================================================================
-
-PLC_Signpost:	dc.w (((PLC_Invalid-PLC_Signpost-2)/6)-1)
-		dc.l Nem_Signpost
-		dc.w $D000
-		dc.l Nem_S1BonusPoints
-		dc.w $96C0
-		dc.l Nem_BigFlash
-		dc.w $8C40
-; ===========================================================================
-
-PLC_Invalid:	dc.w $10	
-; ===========================================================================
-
-PLC_GHZAnimals:	dc.w (((PLC_LZAnimals-PLC_GHZAnimals-2)/6)-1)
-		dc.l Nem_Bunny
-		dc.w $B000
-		dc.l Nem_Flicky
-		dc.w $B240
-; ===========================================================================
-
-PLC_LZAnimals:	dc.w (((PLC_CPZAnimals-PLC_LZAnimals-2)/6)-1)
-		dc.l Nem_Penguin
-		dc.w $B000
-		dc.l Nem_Seal
-		dc.w $B240
-; ===========================================================================
-
-PLC_CPZAnimals:	dc.w (((PLC_EHZAnimals-PLC_CPZAnimals-2)/6)-1)
-		dc.l Nem_Squirrel
-		dc.w $B000
-		dc.l Nem_Seal
-		dc.w $B240
-; ===========================================================================
-
-PLC_EHZAnimals:	dc.w (((PLC_HPZAnimals-PLC_EHZAnimals-2)/6)-1)
-		dc.l Nem_Pig
-		dc.w $B000
-		dc.l Nem_Flicky
-		dc.w $B240
-; ===========================================================================
-
-PLC_HPZAnimals:	dc.w (((PLC_HTZAnimals-PLC_HPZAnimals-2)/6)-1)
-		dc.l Nem_Pig
-		dc.w $B000
-		dc.l Nem_Chicken
-		dc.w $B240
-; ===========================================================================
-
-PLC_HTZAnimals:	dc.w (((PLC_End-PLC_HTZAnimals-2)/6)-1)
-		dc.l Nem_Bunny
-		dc.w $B000
-		dc.l Nem_Chicken
-		dc.w $B240
-PLC_End:
-		even
 ; ===========================================================================
 ;----------------------------------------------------------------------------
 ; Unknown leftover data from some unknown prototype game
-; I haven't had much luck identifying what kind of data this is...
+; RM: I haven't had much luck identifying what kind of data this is...
 ;----------------------------------------------------------------------------
 LeftoverData_Unknown: incbin "art/uncompressed/Unknown.bin"
 		     even
@@ -37223,10 +36718,10 @@ LevelLayout_Index:
 		dc.w Level_EHZ2-LevelLayout_Index,Level_EHZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 39
 		dc.w Level_EHZ1-LevelLayout_Index,Level_EHZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 42
 		dc.w Level_EHZ2-LevelLayout_Index,Level_EHZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 45
-		dc.w Level_HPZ1-LevelLayout_Index,Level_HPZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 48
-		dc.w Level_HPZ1-LevelLayout_Index,Level_HPZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 51
-		dc.w Level_HPZ1-LevelLayout_Index,Level_HPZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 54
-		dc.w Level_HPZ1-LevelLayout_Index,Level_HPZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 57
+		dc.w Level_HPZ1-LevelLayout_Index,LeveL_HPZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 48
+		dc.w Level_HPZ1-LevelLayout_Index,LeveL_HPZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 51
+		dc.w Level_HPZ1-LevelLayout_Index,LeveL_HPZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 54
+		dc.w Level_HPZ1-LevelLayout_Index,LeveL_HPZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 57
 		dc.w Level_HTZ1-LevelLayout_Index,Level_HTZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 60
 		dc.w Level_HTZ2-LevelLayout_Index,Level_HTZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 63
 		dc.w Level_HTZ1-LevelLayout_Index,Level_HTZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 66
@@ -37472,6 +36967,7 @@ Leftover_50A9C:	incbin	"leftovers/50A9C.bin"
 ;---------------------------------------------------------------------------------------
 ; Art, mappings and DPLCs for common objects
 ;---------------------------------------------------------------------------------------
+		bankalign $8000 	; DMA accesses cannot be beyond $8000 bytes
 Art_Sonic:	incbin	"art/uncompressed/Sonic's art.bin"
 		even
 Map_Sonic:	incbin	"mappings/sprite/Sonic.bin"			; some frames do not display correctly for some reason (this only happens on Sonmaped and Flex2 but within the game they display correctly)
@@ -37713,7 +37209,8 @@ Map128_CPZ:     incbin	"mappings/128x128/CPZ.bin"
 Map16_GHZ:      incbin	"mappings/16x16/GHZ.bin"
 		even
 Nem_GHZ:	incbin	"art/nemesis/GHZ.bin"
-; Sonic 1 Leftover - GHZ's secondary art is not used because the secondary and primary art already exist in the one set of tiles.
+; Sonic 1 Leftover - GHZ's secondary art is not used because the
+; secondary and primary art already exist in the one set of tiles.
 Nem_GHZ2:       incbin	"art/nemesis/GHZ2.bin"
 		even
 Chameleon_Map128_GHZ: incbin	"mappings/128x128/GHZ.bin"
@@ -37730,13 +37227,13 @@ S1Nem_CreditsFont:	incbin "art/nemesis/Sonic 1 - Credits.bin"
 		even
 S1Nem_EndingSONICText:	incbin "art/nemesis/Sonic 1 Ending - StH Logo (leftover).bin"
 		even
-
 ; ---------------------------------------------------------------------------
 ; Leftovers from Toe Jam & Earl REV00, likely a result of EPROM reusage
 ; ---------------------------------------------------------------------------
 Leftover_E166F:	incbin	"leftovers/E166F.bin"
 		even
 
+		dcb.b	$100000-*, 0
 EndOfROM:
 ; end of 'ROM'
 
