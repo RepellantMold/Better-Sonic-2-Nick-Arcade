@@ -11,32 +11,7 @@
   include "S2NA.constants.asm"
 ; ---------------------------------------------------------------------------
 ; Macros
-align macro pos,num
-	if narg=1
-		dcb.b ((\pos)-(*%(\pos)))%(\pos),$FF
-	else
-		dcb.b ((\pos)-(*%(\pos)))%(\pos),num
-	endif
-     endm
-
-; Macro to align a bank to prevent it crossing a $8000 byte boundary.
-bankalign macro size
-	if (*&$7FFF)+size>$8000
-	align $8000
-	endif
-     endm
-
-; Macro to stop the Z80
-stopZ80 macro
-	move.w	#$100,(Z80_Bus_Request).l
-@loop:	btst	#0,(Z80_Bus_Request).l
-	bne.s	@loop
-     endm
-
-; Macro to start the Z80
-startZ80 macro
-	move.w	#0,(Z80_Bus_Request).l
-     endm
+  include "macros.asm"
 
 ; >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ; Start of ROM!
@@ -15888,8 +15863,7 @@ Map_S1Obj7E:	dc.w word_C406-Map_S1Obj7E ; DATA XREF:	ROM:0000BDDCo
 					; ROM:Map_S1Obj7Eo ...
 		dc.w word_C470-Map_S1Obj7E
 		dc.w word_C4A2-Map_S1Obj7E
-		dc.w $1C1E4-Map_S1Obj7E	; this points to part of Hidden Palace's PLC data for some strange reason
-					; (also intentionally made this address fixed since shifting it too much will give 'illegal value' errors)
+		dc.w $E003	; (had to do this)
 		dc.w word_C4DC-Map_S1Obj7E
 		dc.w word_C4FE-Map_S1Obj7E
 		dc.w word_C520-Map_S1Obj7E
@@ -36842,11 +36816,11 @@ j_ModifySpriteAttr_2P_1:
 ; ---------------------------------------------------------------------------
 
 ; Macro for declaring a "main level load block" (MLLB).
-levartptrs macro tiles,plc1,blocks,plc2,chunks,music,palette
-	dc.l tiles+(plc1<<24)
-	dc.l blocks+(plc2<<24)
-	dc.l chunks
-	dc.b 0, music, palette, palette
+levartptrs macro
+	dc.l \1+(\2<<24)
+	dc.l \3+(\4<<24)
+	dc.l \5
+	dc.b 0, \6, \7, \7
     endm
 
 ; MainLoadBlocks:
@@ -37249,10 +37223,10 @@ LevelLayout_Index:
 		dc.w Level_EHZ2-LevelLayout_Index,Level_EHZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 39
 		dc.w Level_EHZ1-LevelLayout_Index,Level_EHZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 42
 		dc.w Level_EHZ2-LevelLayout_Index,Level_EHZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 45
-		dc.w Level_HPZ1-LevelLayout_Index,LeveL_HPZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 48
-		dc.w Level_HPZ1-LevelLayout_Index,LeveL_HPZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 51
-		dc.w Level_HPZ1-LevelLayout_Index,LeveL_HPZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 54
-		dc.w Level_HPZ1-LevelLayout_Index,LeveL_HPZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 57
+		dc.w Level_HPZ1-LevelLayout_Index,Level_HPZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 48
+		dc.w Level_HPZ1-LevelLayout_Index,Level_HPZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 51
+		dc.w Level_HPZ1-LevelLayout_Index,Level_HPZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 54
+		dc.w Level_HPZ1-LevelLayout_Index,Level_HPZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 57
 		dc.w Level_HTZ1-LevelLayout_Index,Level_HTZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 60
 		dc.w Level_HTZ2-LevelLayout_Index,Level_HTZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 63
 		dc.w Level_HTZ1-LevelLayout_Index,Level_HTZBg-LevelLayout_Index,Level_Null-LevelLayout_Index; 66
@@ -37306,8 +37280,7 @@ Leftover_LevelLayouts:	incbin	"leftovers/Level layouts.bin"
 		even
 
 ;----------------------------------------------------
-; A duplicate?
-; It's completely identical to the normal version
+; A duplicate, completely identical
 ;----------------------------------------------------
 ;Leftover_Art_BigRing:
 		incbin	"art/uncompressed/Giant Ring.bin"
@@ -37499,7 +37472,6 @@ Leftover_50A9C:	incbin	"leftovers/50A9C.bin"
 ;---------------------------------------------------------------------------------------
 ; Art, mappings and DPLCs for common objects
 ;---------------------------------------------------------------------------------------
-		bankalign $8000 	; DMA accesses cannot be beyond $8000 bytes
 Art_Sonic:	incbin	"art/uncompressed/Sonic's art.bin"
 		even
 Map_Sonic:	incbin	"mappings/sprite/Sonic.bin"			; some frames do not display correctly for some reason (this only happens on Sonmaped and Flex2 but within the game they display correctly)
@@ -37758,11 +37730,14 @@ S1Nem_CreditsFont:	incbin "art/nemesis/Sonic 1 - Credits.bin"
 		even
 S1Nem_EndingSONICText:	incbin "art/nemesis/Sonic 1 Ending - StH Logo (leftover).bin"
 		even
+
 ; ---------------------------------------------------------------------------
 ; Leftovers from Toe Jam & Earl REV00, likely a result of EPROM reusage
 ; ---------------------------------------------------------------------------
 Leftover_E166F:	incbin	"leftovers/E166F.bin"
 		even
+
+EndOfROM:
 ; end of 'ROM'
 
 
